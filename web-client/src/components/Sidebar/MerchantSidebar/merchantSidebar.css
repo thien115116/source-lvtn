@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.active {
+    background: #f0f2f5;
+}
+
+.sidebar-link {
+    position: relative;
+    line-height: unset !important;
+    padding: 15px 15px !important;
+    margin-bottom: unset !important;
+    height: auto !important;
+}
+
+.active.sidebar-item>.sidebar-link span {
+    color: #2f4cdd !important;
+    opacity: 1;
+}
+
+.sidebar-link span {
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.7;
+}
+
+.sidebar-link::before {
+    content: "";
+    height: 100%;
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #2f4cdd;
+    transition: all .5s;
+    border-radius: 0 .375rem .375rem 0;
+}
+
+.active.sidebar-item>.sidebar-link::before {
+    width: 8px !important;
+}
+
+.sidebar-item a:not(.sidebar-link) {
+    position: relative;
+    display: block;
+    padding: .625rem 1.875rem;
+    outline-width: 0;
+    color: #7e7e7e;
+    text-decoration: none;
+    text-align: center;
+}
+
+.sub-item a.sub-item a {
+    padding: 5px 0;
+    position: relative;
+    font-size: 16px;
+    padding-left: 6.25rem;
+}
+
+.sidebar-item a:hover {
+    text-decoration: none !important;
+}
+
+.sub-item a:hover span {
+    color: #2f4cdd;
+    transition: 0.3s ease;
+}

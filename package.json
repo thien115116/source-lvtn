@@ -1,0 +1,56 @@
+{
+  "name": "lvtn-boofood",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "be": "npm i -s && nodemon app.js",
+    "fe": "cd admin-dashboard && npm start",
+    "io": "cd socket && nodemon index.js",
+    "mc": "cd web-client && npm start",
+    "lib": "npm i -s",
+    "lib-fe": "cd admin-dashboard && npm i -s",
+    "lib-mc": "cd web-client && npm i -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/lexuanhau99/lvtn-boofood.git"
+  },
+  "author": "Le Xuan Hau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/lexuanhau99/lvtn-boofood/issues"
+  },
+  "homepage": "https://gitlab.com/lexuanhau99/lvtn-boofood#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-validation": "^3.0.8",
+    "file-saver": "^2.0.5",
+    "firebase-admin": "^9.11.0",
+    "fs": "0.0.1-security",
+    "handlebars": "^4.7.7",
+    "http-status": "^1.5.0",
+    "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mdb-ui-kit": "^3.6.0",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "node-cron": "^3.0.0",
+    "nodemailer": "^6.6.1",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.7",
+    "react-lottie": "^1.2.3",
+    "sharp": "^0.28.1",
+    "uuid": "^8.3.2",
+    "xlsx": "^0.17.0"
+  }
+}

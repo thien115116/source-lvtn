@@ -1,0 +1,261 @@
+.workview--border {
+    height: auto;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    min-height: 400px;
+}
+
+.workview__title {
+    color: black;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+fieldset.scheduler-border {
+    border: 1px groove #000 !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    border-radius: 20px;
+}
+
+legend.scheduler-border {
+    width: inherit;
+    /* Or auto */
+    padding: 0 10px;
+    /* To give a bit of padding on the left and right */
+    border-bottom: none;
+    border-radius: 20px;
+}
+
+.btn__workview {
+    width: 90px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    line-height: 30px;
+    border-radius: 10px;
+    padding: unset !important;
+    background-color: dodgerblue;
+    display: inline-block;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn__workview--plus {
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: unset !important;
+    display: inline-block;
+    color: white !important;
+    font-weight: bold;
+    text-decoration: unset !important;
+    box-shadow: unset !important;
+}
+
+.btn__workview--plus:hover, .btn__workview:hover {
+    background-color: #f9423c;
+    text-decoration: unset;
+}
+
+.merchant__pending, .comment__pending {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Message propo */
+
+.message {
+    max-height: 391px;
+}
+
+.message__title {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #1e90ff;
+    border-radius: 10px;
+}
+
+.message__title span {
+    color: white;
+    font-size: 25px;
+}
+
+.message__content {
+    width: 100%;
+    max-height: 100px;
+    height: 150px;
+    /* background-color: red; */
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #1e90ff;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.message__response {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.popup__merchant {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #1e90ff;
+}
+
+/* Card body setup */
+
+.card__icon {
+    height: 30px;
+    width: 30px;
+    box-shadow: inset 0px 0px 2px 5px #1F0E95;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white !important;
+    border: unset;
+}
+
+.card__title {
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.card__value {
+    padding-left: 10px;
+    font-size: 16px;
+    opacity: 0.8;
+    /* text-transform: capitalize; */
+}
+
+.btn-success {
+    background-color: #1e90ff !important;
+}
+
+.btn-warning {
+    background-color: #f9423c !important;
+}
+
+.labelAdmin {
+    padding: 5px 10px;
+    background: rgb(251, 177, 177);
+    border-radius: 5px;
+    color: rgb(167, 0, 0);
+    font-size: 16px;
+}
+
+.label_ASAP {
+    padding: 5px 10px;
+    background: rgb(251, 177, 177);
+    border-radius: 5px;
+    color: rgb(167, 0, 0);
+    font-size: 16px;
+    text-align: center;
+}
+
+.labelStaff {
+    padding: 5px 10px;
+    background: rgb(148, 201, 255);
+    border-radius: 5px;
+    color: rgb(0, 3, 156);
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_enable {
+    padding: 5px 10px;
+    background: rgba(4, 209, 209, 0.1);
+    border-radius: 5px;
+    color: #009dab;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_enable {
+    padding: 5px 10px;
+    background: rgba(209, 4, 48, 0.1);
+    border-radius: 5px;
+    color: #ab0025;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_online {
+    padding: 5px 10px;
+    background: rgba(4, 209, 130, 0.1);
+    border-radius: 5px;
+    color: #00ab42;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_online {
+    padding: 5px 10px;
+    background: rgba(209, 4, 124, 0.1);
+    border-radius: 5px;
+    color: #ab0025;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_confirm_email {
+    padding: 5px 10px;
+    background: rgba(209, 4, 175, 0.1);
+    border-radius: 5px;
+    color: #ab0094;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_confirm_email {
+    padding: 5px 10px;
+    background: rgba(195, 209, 4, 0.1);
+    border-radius: 5px;
+    color: #aba000;
+    font-size: 16px;
+    text-align: center;
+}
+
+._card-food {
+    outline: none;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.count-task-title {
+    font-weight: bold;
+    font-size: 30px;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.action-create-area {
+    border-left: 2px solid black;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.btn_create-food {
+    background-color: #f0e4f8ad;
+    color: #2f4cdd;
+}
+
+.btn_create-food:hover {
+    background-color: #2f4cdd;
+    color: white;
+}

@@ -1,0 +1,18 @@
+.marker {
+    background: url(../../../../assets/images/marker.png) no-repeat center center /contain;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    width: 20%;
+    z-index: 100;
+}
+
+.mapboxgl-popup-content {
+    border-radius: 10px;
+    color: #000;
+}
+
+.mapboxgl-popup-close-button {
+    font-size: 30px;
+}

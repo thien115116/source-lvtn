@@ -1,0 +1,222 @@
+.work-image-box-1 {
+    border-radius: 30px;
+    background-color: #f6f6f6;
+}
+
+.work-image-box-2 {
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.work-img-admin {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.table-work img {
+    max-width: unset !important;
+    border-radius: unset !important;
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+}
+
+.work-name-admin {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.work-img-inner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff__title {
+    text-transform: capitalize;
+    color: #000;
+    display: inline-block;
+}
+
+.label_merchant {
+    padding: 5px 10px;
+    background: #299433;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.label_warning {
+    padding: 5px 10px;
+    background: rgb(240, 251, 177);
+    border-radius: 5px;
+    color: rgb(93, 87, 0);
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.label_doing {
+    padding: 5px 10px;
+    background: rgb(177, 205, 251);
+    border-radius: 5px;
+    color: rgb(0, 87, 93);
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.labelAdmin {
+    padding: 5px 10px;
+    background: rgb(251, 177, 177);
+    border-radius: 5px;
+    color: rgb(167, 0, 0);
+    font-size: 16px;
+}
+
+.label_ASAP {
+    padding: 5px 10px;
+    background: rgb(251, 177, 177);
+    border-radius: 5px;
+    color: rgb(167, 0, 0);
+    font-size: 16px;
+    text-align: center;
+}
+
+.labelStaff {
+    padding: 5px 10px;
+    background: rgb(148, 201, 255);
+    border-radius: 5px;
+    color: rgb(0, 3, 156);
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_enable {
+    padding: 5px 10px;
+    background: rgba(4, 209, 209, 0.1);
+    border-radius: 5px;
+    color: #009dab;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_enable {
+    padding: 5px 10px;
+    background: rgba(209, 4, 48, 0.1);
+    border-radius: 5px;
+    color: #ab0025;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_online {
+    padding: 5px 10px;
+    background: rgba(4, 209, 130, 0.1);
+    border-radius: 5px;
+    color: #00ab42;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_online {
+    padding: 5px 10px;
+    background: rgba(209, 4, 124, 0.1);
+    border-radius: 5px;
+    color: #ab0025;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_confirm_email {
+    padding: 5px 10px;
+    background: rgba(209, 4, 175, 0.1);
+    border-radius: 5px;
+    color: #ab0094;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_confirm_email {
+    padding: 5px 10px;
+    background: rgba(195, 209, 4, 0.1);
+    border-radius: 5px;
+    color: #aba000;
+    font-size: 16px;
+    text-align: center;
+}
+
+.form-card {
+    outline: none;
+    height: 500px;
+    max-height: 700px;
+    width: 100%;
+    box-shadow: 3px 3px 2px #d0d0d0;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 25px;
+}
+
+.table-card {
+    outline: none;
+    height: auto;
+    width: 100%;
+    box-shadow: 3px 3px 2px #d0d0d0;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 25px;
+}
+
+.table-card span {
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.table-card .desc-title {
+    padding-top: 10px;
+    display: block;
+    font-size: 16px;
+    opacity: 0.7;
+    font-weight: 500;
+    padding-bottom: 0px;
+    text-transform: unset;
+}
+
+.form-card .form-card-title .desc-title {
+    padding-top: 10px;
+    display: block;
+    font-size: 16px;
+    opacity: 0.7;
+    font-weight: 500;
+    padding-bottom: 40px;
+}
+
+.form-card .form-card-title span {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.7;
+    text-transform: capitalize;
+}
+
+.form-review-img-small {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.form-review-img-big {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}

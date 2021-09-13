@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "baseUrl": "./src"
+  },
+  "include": [
+    "src/**/*",
+    "../web-client/src/service/calculatingDayOfWeek.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

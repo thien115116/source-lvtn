@@ -1,0 +1,1304 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : MySQL Local
+ Source Server Type    : MySQL
+ Source Server Version : 100418
+ Source Host           : localhost:3306
+ Source Schema         : lvtn-boofood
+
+ Target Server Type    : MySQL
+ Target Server Version : 100418
+ File Encoding         : 65001
+
+ Date: 17/06/2021 16:07:16
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for account
+-- ----------------------------
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE `account`  (
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `phone` varchar(13) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `role` int NOT NULL,
+  `first_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `last_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `salt` varchar(16) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `hash_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `url_avt` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `create_date` datetime NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `latitude` float(10, 8) NULL DEFAULT NULL,
+  `longitude` float(11, 8) NULL DEFAULT NULL,
+  `language` char(2) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `is_enable` tinyint(1) NOT NULL,
+  `is_GoogleAccount` tinyint(1) NULL DEFAULT NULL,
+  `is_FacebookAccount` tinyint(1) NULL DEFAULT NULL,
+  `is_confirmEmail` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_user`) USING BTREE,
+  UNIQUE INDEX `phone`(`phone`) USING BTREE,
+  UNIQUE INDEX `email`(`email`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of account
+-- ----------------------------
+INSERT INTO `account` VALUES ('AC-1619719339521-3cdc1d492bf0e13bcb6', 'hagrid.l@itcgroup.io', '09712500204', 1, 'Le', 'Hau', '3ac0e010bdbe7e16', 'ab52426856ca0b328b82ddf2fcae68080969fdd60cdbf09e1fb2bb8b818f4fdb77b42204be631c2c9acd1ef084bc8ab1dfc5d6dd39446cba494cbd6fa4175b86', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-04-30 01:02:19', 1, 10.73202515, 106.69882965, 'VN', 1, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1619928481144-460e26cb64b183e1ae5', 'lexuanhau99@gmail.com', '0971500215', 1, 'Le', 'Hau', 'b56cc46c6f63fb9a', '94881da820477c6e760ab6f28208dc26db8201c83d2149d231c2879726cc21f474c6e14bb0925c1cb528266d72334855749be1a7b501384c18d2d8a4e434d9a7', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-02 11:08:01', 1, NULL, NULL, 'VN', 1, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1619928822334-04049d27864be454af6', 'letrungnhan99@gmail.com', '0971500206', 1, 'Le', 'Nhan', '92f798908f7593cc', 'f9117412faf634a590ae4224b0a38945ca9b1fb7ac17d7bfb8871f20ad6bec924a9c098b8544ae350b361248a89875bc2faf7ffd4f2c52228668ade8f2cedbbc', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-02 11:13:42', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1619928941309-62e15f613b233140c1e', 'nguyenchinghia99@gmail.com', '0971500207', 1, 'Chí', 'Nghĩa Nguyễn', 'aff28a4bae287b6a', '7ac60890b1e68daf0208ecef1d9b4f32daf4808036a93c84bdfc55829bfd90c1eeb8a081fd77dde517c7aabd4c067a9e63de0063a1af1a42cd1cdd87b1f1b7dd', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-02 11:15:41', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620365579825-dcc7e637be9a4905ce9', 'thientran@itcgroup.io', '0971500213', 1, 'Thien', 'Tran', 'de586fe5fde71cd8', '0d2e816e52f717303ae66d0aeda9c4cfffda1620287e4c44d9255a8ba413ae503f39b4cf738ea62595a0f03c17ccca66074f463eb1a5435420639e422cdcf0bc', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-07 12:32:59', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620369170796-3fa75c85e0c2bfa2e54', 'lapcong@itcgroup.io', '0971500124', 1, 'Lap Cong', 'Chau', '57bae63c6570f16f', 'cb23fe6607fa061092d298180286a351fe17aada7f5142025979903dbcbc264c705da4aab8cd6994fc615813c295f46562b9705b1d78e16196de56e777822f6e', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-07 13:32:50', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620372319970-590831bc3c99e61899f', 'nguyenphucanh@gmail.com', '0971500221', 1, 'Nguyen', 'Phuc Anh', 'eb3793604845f4c0', '452e7061084bab2b916fbe99a96f3f140e435b28fd395a717c3f67e674e68d0a751729afcc0175f0549321a61148f94ae3a3a819eb9265549cf1badac10915dc', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-07 14:25:19', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620372434194-c8d1318304c66cd5f76', 'nguyenphuckhoat@gmail.com', '0971500216', 1, 'Nguyen', 'Phuc Khoat', '6b77ce5e275a35f8', '566de8e2afe363bb00814a4787b85afd8d2a9c449eed5b235ad538d7855c760ea7c0d833dab71239ad270ea507dd19054014268f86ae203cd1fda8616604b434', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-07 14:27:14', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620483426772-d45e76d2df37b36eb0a', 'nguyenvana1@gmail.com', '0971500220', 1, 'Nguyen', 'Van A', '04801bd914a25cd8', 'a036f373545a3c67519f3a933147e9b33aa63770986077271c67aa4baf18c7ab6de0827be07b2cea0e5bda837bb3e470a8219761f2f9b6eedf0b2912f67c026f', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-08 21:17:06', 1, NULL, NULL, 'VN', 0, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620483441060-4af4f11a6b7d4229cb6', 'nguyenvana2@gmail.com', '0971500222', 1, 'Nguyen', 'Van A1', '591a0785fad2b67e', '0a6d0e4cf9ffe525c25235af7fc65a012476c543ccaea7079833ad50a902a18770b8614009c79cbe95ca42148334beb9f34a2d5992c59b109e4ae17c2e84f59a', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-08 21:17:21', 1, NULL, NULL, 'VN', 1, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620483446618-c53e9ed27dbf09035ab', 'nguyenvana3@gmail.com', '0971500223', 1, 'Nguyen', 'Van A2', '71d34a7b39c3b7a5', '3de4205819a5480aca5db6b34c7221a9bc20a1f3801564de5752d5af8be560b35f7daba08f4dc015616a80779bd8d7dfebfdc88e9f09c7f66aae93e8d5a6bd91', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-08 21:17:26', 1, NULL, NULL, 'VN', 1, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620483450390-d76e87445b215411b1a', 'nguyenvana4@gmail.com', '0971500224', 1, 'Nguyen', 'Van A3', '7f4eb8b392cccc9c', '367bf157f592079e9d82d641179e5707e8f82114bb43b20f63b32b20ea152b0ea91051d9248d59c3d7c4b90a5054dc5089aa7105862505e724ba8e9c5b294ea5', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-08 21:17:30', 1, NULL, NULL, 'VN', 1, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1620483453582-a7da376f7059317edaf', 'nguyenvana5@gmail.com', '0971500225', 1, 'Nguyen', 'Van A4', '3ac0e010bdbe7e16', 'ab52426856ca0b328b82ddf2fcae68080969fdd60cdbf09e1fb2bb8b818f4fdb77b42204be631c2c9acd1ef084bc8ab1dfc5d6dd39446cba494cbd6fa4175b86', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-05-08 21:17:33', 1, NULL, NULL, 'VN', 1, 0, 0, '');
+INSERT INTO `account` VALUES ('AC-1623310264309-8f7de2c47c095416a65', 'neihtgod@gmail.com', '0944141984', 0, 'Le', 'Xuan Hau', 'b56cc46c6f63fb9a', '94881da820477c6e760ab6f28208dc26db8201c83d2149d231c2879726cc21f474c6e14bb0925c1cb528266d72334855749be1a7b501384c18d2d8a4e434d9a7', 'https://gravatar.com/avatar/?s=200&d=retro', '2021-06-10 14:31:04', 1, NULL, NULL, 'VN', 1, 0, 0, '6c216ef2-dfef-4fea-b126-bd35a5afa91b');
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin`  (
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `salt` varchar(16) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `hash_pass` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `full_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `created_date` datetime NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `is_enable` tinyint(1) NULL DEFAULT NULL,
+  `role` int NOT NULL,
+  `confirm_email` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `updated_date` datetime NULL DEFAULT NULL,
+  `login_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `url_img` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_admin`) USING BTREE,
+  UNIQUE INDEX `email`(`email`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('AD-1619772958570-a5be4de1e4050bd5630', '59849213f2b5d26e', '658534fc605f5be5bb657f8a05d142706c4a1a16be4ea2475d0a25acbfd92624ced6bbb1d2f63d79aa61b9302ff0cd4e9894051fd9bceed430286e7792b97506', 'Administrator', 'admin@boofood.com', '2021-06-11 15:56:13', 1, 1, 2, '1', '2021-06-11 15:56:13', 'defaul', NULL);
+INSERT INTO `admin` VALUES ('AD-1620372073355-2afe768cedaaa1b1453', '97edbca8be2f9601', '22883b44452f53709afd97d54d01df12754744eb25d8a83908b49f7c1286076eb5524c02d860d8c7da3509dea6a0b2b60e86e693543a093d90bff9ad83c20118', 'Tran Ngoc Thien', 'thien.t@gmail.com', '2021-06-11 15:56:13', 1, 1, 1, '1', '2021-06-11 15:56:13', 'defaul', NULL);
+INSERT INTO `admin` VALUES ('AD-1620372135358-21105ee877a14c8c9ac', 'a176a02480bac08c', '45aee22f46077500b23a76b0b63a3cf84fba6accf59baae90e8a7c4e60077d17948e5793510b8113daf9fd9c47a6c977f6230222a950b73c63b5fe7d0283aa39', 'Dang Chi Hoang', 'hoang.d@gmail.com', '2021-06-11 15:56:13', 1, 1, 1, '1', '2021-06-11 15:56:13', 'defaul', NULL);
+INSERT INTO `admin` VALUES ('AD-1620372158118-ef2d3cc2b2b6705cf67', 'd28df4cf76389a19', '0873c0829c5e82872e582befa44cdd29d74e387eb7f4aeb1d00d1507d27c5cd9a64cd8216aa639a5880b3db32b6917119f507c77da791fa190023a7f48782541', 'Dang Thanh Duy', 'duy.d@gmail.com', '2021-06-11 15:56:13', 1, 1, 1, '1', '2021-06-11 15:56:13', 'defaul', NULL);
+INSERT INTO `admin` VALUES ('AD-1623401773141-74695e748797216be25', 'e1c38facc605b911', 'b7ccf6d0d44c93ee5f30eb827e583a53e41966e3bbd3794ba54073cf5e96da7345a5b0e641eb12d062ccfd8e7d1fab0f1e9deb98717b2b80ba8b50cab5e2cd04', 'Châu Lập Công', 'chaulapcong97@gmail.com', '2021-06-11 15:56:13', 0, 0, 1, NULL, '2021-06-11 15:56:13', 'default', NULL);
+
+-- ----------------------------
+-- Table structure for attribute_values
+-- ----------------------------
+DROP TABLE IF EXISTS `attribute_values`;
+CREATE TABLE `attribute_values`  (
+  `id_attr_value` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_attr` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `price` int NULL DEFAULT NULL,
+  PRIMARY KEY (`id_attr_value`) USING BTREE,
+  INDEX `FKATTRIBUTE_704130`(`id_attr`) USING BTREE,
+  INDEX `FKATTRIBUTE_244960`(`id_product`) USING BTREE,
+  CONSTRAINT `FKATTRIBUTE_244960` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKATTRIBUTE_704130` FOREIGN KEY (`id_attr`) REFERENCES `attributes` (`id_attr`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of attribute_values
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for attributes
+-- ----------------------------
+DROP TABLE IF EXISTS `attributes`;
+CREATE TABLE `attributes`  (
+  `id_attr` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `type_pick` tinyint(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_attr`) USING BTREE,
+  UNIQUE INDEX `name`(`name`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of attributes
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for banner
+-- ----------------------------
+DROP TABLE IF EXISTS `banner`;
+CREATE TABLE `banner`  (
+  `id_banner` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `url_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `created_date` datetime NOT NULL,
+  `disable_date` datetime NULL DEFAULT NULL,
+  `public_date` datetime NOT NULL,
+  `state` tinyint NULL DEFAULT NULL,
+  `url_blog` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_banner`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of banner
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for brand
+-- ----------------------------
+DROP TABLE IF EXISTS `brand`;
+CREATE TABLE `brand`  (
+  `id_brand` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `code` char(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `createAt` datetime NULL DEFAULT NULL,
+  `nameBrand` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `is_enable` int NOT NULL,
+  `legalRepresentative` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `address` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `dateActive` date NULL DEFAULT NULL,
+  PRIMARY KEY (`id_brand`) USING BTREE,
+  UNIQUE INDEX `nameBrand`(`nameBrand`) USING BTREE,
+  UNIQUE INDEX `code`(`code`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of brand
+-- ----------------------------
+INSERT INTO `brand` VALUES ('BR-1623916492859-65abd097b1ea22fac78', '0302108546', '2021-06-17 14:54:52', 'Cửa Hàng Trà Cà Phê Phúc Long.', 1, 'Lâm Bội Minh', '63 Mạc Thị Bưởi, Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh', '2000-01-01');
+INSERT INTO `brand` VALUES ('BR-1623916712825-2cb940b5535f0d82ac9', '0106341306', '2021-06-17 14:58:32', 'Công ty Cổ phần thương mại dịch vụ Taco Việt Nam', 1, 'Bùi Đăng Bảo', 'Số 105, ngõ 622, đường Minh Khai, P. Vĩnh Tuy, Q. Hai Bà Trưng, Tp. Hà Nội', '2013-10-22');
+INSERT INTO `brand` VALUES ('BR-1623916939549-c83d4dfd80e3905172b', '0310715632', '2021-06-17 15:02:19', 'HIGHLANDS COMPANY LIMITED', 1, 'Vũ Quang Hiệp', 'Lầu 9, toà nhà Hà Đô, 02 Hồng Hà, Phường 2, Quận Tân Bình, Thành phố Hồ Chí Minh, Việt Nam', '2011-03-23');
+INSERT INTO `brand` VALUES ('BR-1623917002411-0d97f7b4c0f45ceaacd', '0315607528', '2021-06-17 15:03:22', 'TIGER SUGAR INTERNATIONAL COMPANY LIMITED', 1, 'CHỐNG NGUYỆT BÌNH', '18A2 Nguyễn Thị Minh Khai, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh, Việt Nam', '2019-04-04');
+INSERT INTO `brand` VALUES ('BR-1623917146890-84551c4cb543a638d43', '0311912471', '2021-06-17 15:05:46', 'Domino\'s Pizza', 1, 'Vũ Thị Ngọc Bích', 'Lầu 5, Tòa nhà Sài Gòn Royal, 91 Pasteur - Phường Bến Nghé - Quận 1 - TP Hồ Chí Minh', '0000-00-00');
+
+-- ----------------------------
+-- Table structure for cart
+-- ----------------------------
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart`  (
+  `id_cart` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `created_date` datetime NULL DEFAULT NULL,
+  `updated_date` datetime NULL DEFAULT NULL,
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `note` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `state` int NULL DEFAULT NULL,
+  PRIMARY KEY (`id_cart`) USING BTREE,
+  INDEX `FKCART534043`(`id_user`) USING BTREE,
+  CONSTRAINT `FKCART534043` FOREIGN KEY (`id_user`) REFERENCES `account` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cart
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for cart_item
+-- ----------------------------
+DROP TABLE IF EXISTS `cart_item`;
+CREATE TABLE `cart_item`  (
+  `id_cartItem` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `price` float NOT NULL,
+  `quantity` int NOT NULL,
+  `created_date` datetime NOT NULL,
+  `updated_date` datetime NOT NULL,
+  `id_cart` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `locations` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `note` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_cartItem`) USING BTREE,
+  INDEX `FKCART_ITEM871839`(`id_product`) USING BTREE,
+  INDEX `FKCART_ITEM555378`(`id_cart`) USING BTREE,
+  CONSTRAINT `FKCART_ITEM555378` FOREIGN KEY (`id_cart`) REFERENCES `cart` (`id_cart`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKCART_ITEM871839` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cart_item
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for comment
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment`  (
+  `id_comment` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `create_date` datetime NOT NULL,
+  `contents` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `point` int NULL DEFAULT NULL,
+  `status` int NOT NULL,
+  `accept_date` datetime NULL DEFAULT NULL,
+  `disable_date` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id_comment`) USING BTREE,
+  INDEX `FKCOMMENT347971`(`id_product`) USING BTREE,
+  INDEX `FKCOMMENT787781`(`id_user`) USING BTREE,
+  CONSTRAINT `FKCOMMENT347971` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKCOMMENT787781` FOREIGN KEY (`id_user`) REFERENCES `account` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of comment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for favourites
+-- ----------------------------
+DROP TABLE IF EXISTS `favourites`;
+CREATE TABLE `favourites`  (
+  `id_favourites` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_favourites`) USING BTREE,
+  INDEX `FKFAVOURITES584621`(`id_product`) USING BTREE,
+  INDEX `FKFAVOURITES448868`(`id_user`) USING BTREE,
+  CONSTRAINT `FKFAVOURITES448868` FOREIGN KEY (`id_user`) REFERENCES `account` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKFAVOURITES584621` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of favourites
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for image_food
+-- ----------------------------
+DROP TABLE IF EXISTS `image_food`;
+CREATE TABLE `image_food`  (
+  `id_photo` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `url_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_photo`) USING BTREE,
+  UNIQUE INDEX `url_image`(`url_image`) USING BTREE,
+  INDEX `FKIMAGE_FOOD699329`(`id_product`) USING BTREE,
+  CONSTRAINT `FKIMAGE_FOOD699329` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of image_food
+-- ----------------------------
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039091572-76be7ecea7', 'FO-1620039091565-e09d7bc18a1cb7faaaf', '/upload/IMG-FD-1620038038765-a26bd79b33.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039091573-91ae3450a4', 'FO-1620039091565-e09d7bc18a1cb7faaaf', '/upload/IMG-FD-1620038038767-aa7b14833a.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039091573-bd0be861e8', 'FO-1620039091565-e09d7bc18a1cb7faaaf', '/upload/IMG-FD-1620038038767-a7af8e5ebf.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039130535-b057aab4ec', 'FO-1620039130530-1344fa247382405b73a', '/upload/IMG-FD-1620039110503-d72ffa718f.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039130535-b93e8b2155', 'FO-1620039130530-1344fa247382405b73a', '/upload/IMG-FD-1620039110503-31217ff757.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039130535-bdc01d654b', 'FO-1620039130530-1344fa247382405b73a', '/upload/IMG-FD-1620039110501-ae9d699eef.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039349682-04c05b873f', 'FO-1620039349677-92513aba9cb0bb868e4', '/upload/IMG-FD-1620039288139-8529bf87fa.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039349683-0ae78113a2', 'FO-1620039349677-92513aba9cb0bb868e4', '/upload/IMG-FD-1620039288141-4b62a6c3f5.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039349683-61d09d4d77', 'FO-1620039349677-92513aba9cb0bb868e4', '/upload/IMG-FD-1620039288141-175e01465e.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039388147-0dc3475f4f', 'FO-1620039388139-22dc8477769bb1b1e3a', '/upload/IMG-FD-1620039370230-e9747ea59f.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039388147-597ea348b2', 'FO-1620039388139-22dc8477769bb1b1e3a', '/upload/IMG-FD-1620039370229-d416ee87de.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620039388147-a80cc9a78c', 'FO-1620039388139-22dc8477769bb1b1e3a', '/upload/IMG-FD-1620039370230-594f6360ac.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620365513023-31bf8554af', 'FO-1620365513016-91d359af3e6964e1186', '/upload/IMG-FD-1620365472393-640757fcc0.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620365513023-31c80b78cb', 'FO-1620365513016-91d359af3e6964e1186', '/upload/IMG-FD-1620365472525-a695ed184a.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620365513023-ccebe06a98', 'FO-1620365513016-91d359af3e6964e1186', '/upload/IMG-FD-1620365472526-221c4ec2a4.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494639880-2c0a6cb0e7', 'FO-1620494639875-4ec05ee4b61bab9f63a', '/upload/IMG-FD-1620494433651-6a51c68113.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494639880-b5bc7619ec', 'FO-1620494639875-4ec05ee4b61bab9f63a', '/upload/IMG-FD-1620494433289-456a24c91b.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494639880-f135f60db0', 'FO-1620494639875-4ec05ee4b61bab9f63a', '/upload/IMG-FD-1620494433651-e47cfbf20f.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494660099-8624352c0c', 'FO-1620494660094-cf72fb3be0f54fc6df0', '/upload/IMG-FD-1620494651886-24573b31a3.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494660099-a52da1b448', 'FO-1620494660094-cf72fb3be0f54fc6df0', '/upload/IMG-FD-1620494651886-30c31da0ce.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494660099-b115249bae', 'FO-1620494660094-cf72fb3be0f54fc6df0', '/upload/IMG-FD-1620494651886-a733f12787.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494764894-275b225620', 'FO-1620494764889-f015e2cdc76a800f440', '/upload/IMG-FD-1620494756497-be49f8df63.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494764894-4a2804e247', 'FO-1620494764889-f015e2cdc76a800f440', '/upload/IMG-FD-1620494756496-c87514d4c6.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620494764894-8e667e6017', 'FO-1620494764889-f015e2cdc76a800f440', '/upload/IMG-FD-1620494756497-94a9e6c164.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620537193058-3b3c960696', 'FO-1620537193052-fabae24a8d654a90e59', '/upload/IMG-FD-1620494756497-94a9e6c864.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620537193058-678418c7d0', 'FO-1620537193052-fabae24a8d654a90e59', '/upload/IMG-FD-1620494756496-c87514d8c6.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1620537193058-84d13192e3', 'FO-1620537193052-fabae24a8d654a90e59', '/upload/IMG-FD-1620494756497-be49f8d863.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1621653632814-22cd939144', 'FO-1621653632808-eed76f36d4cf680a695', '/upload/IMG-FD-1621653511858-7056225559.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1621653632814-23af1b624f', 'FO-1621653632808-eed76f36d4cf680a695', '/upload/IMG-FD-1621653511858-80eb072fa1.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1621653632814-64aba59bda', 'FO-1621653632808-eed76f36d4cf680a695', '/upload/IMG-FD-1621653511859-4c37892d4b.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1621653632814-745ee9de3c', 'FO-1621653632808-eed76f36d4cf680a695', '/upload/IMG-FD-1621653511492-b1105fbf39.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623490041750-04a685d0da', 'FO-1623490041744-136d6d4b33434ebc7d9', '/upload/IMG-FD-1623490037992-0a58b30b60.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623490041750-234cbda3ff', 'FO-1623490041744-136d6d4b33434ebc7d9', '/upload/IMG-FD-1623490037616-a1a167bd22.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623490041750-b72707a43b', 'FO-1623490041744-136d6d4b33434ebc7d9', '/upload/IMG-FD-1623490037992-a30eeba9e3.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623490041750-b9d5565e3c', 'FO-1623490041744-136d6d4b33434ebc7d9', '/upload/IMG-FD-1623490037991-931f59d84d.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623490503772-b62d635f8b', 'FO-1623490503767-994d6d6f695420e20c1', '/upload/IMG-FD-1623490500142-2779b75b6e.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623490542897-3600ef027f', 'FO-1623490542892-b0cbb082f01b2532c43', '/upload/IMG-FD-1623490539260-aef2c43a88.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623501049049-4e4ada5db3', 'FO-1623501049045-854dfe70053ce9bd210', '/upload/IMG-FD-1623501045392-710e6811ce.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623501106535-0238617b33', 'FO-1623501106530-e36c5b5f44aa45c9a7d', '/upload/IMG-FD-1623501102888-8f91a8f466.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623575403845-6458e79d8d', 'FO-1623575403840-8a46c697711893c45a1', '/upload/IMG-FD-1623575399315-0448e9c31f.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623575482706-c977e6530e', 'FO-1623575482701-9422dacf0bf6a35e6dc', '/upload/IMG-FD-1623575478676-4111019362.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623575526141-a4b511f363', 'FO-1623575526136-52ecf3e1cef6bf69fc0', '/upload/IMG-FD-1623575522464-cdff64e0fc.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623575834656-674085abdd', 'FO-1623575834651-444cbf28b3002276a41', '/upload/IMG-FD-1623575830971-9993a86f87.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623575902429-b3099a24d8', 'FO-1623575902425-6c9bd8f59c387633d6c', '/upload/IMG-FD-1623575898701-9a67556ed4.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623575966418-2c58aeda8a', 'FO-1623575966413-0200fb08189f67a7a6c', '/upload/IMG-FD-1623575962798-8016faf3e7.jpeg');
+INSERT INTO `image_food` VALUES ('IMG-FD-1623576064720-a323035aa5', 'FO-1623576064716-b2c6c070e3595cc003a', '/upload/IMG-FD-1623576061077-7df78dddf2.jpeg');
+
+-- ----------------------------
+-- Table structure for log_admin_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `log_admin_comment`;
+CREATE TABLE `log_admin_comment`  (
+  `id_log` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_comment` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `status_old` int NOT NULL,
+  `status_new` int NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_log`) USING BTREE,
+  INDEX `FKLOG_ADMIN_20348`(`id_admin`) USING BTREE,
+  INDEX `FKLOG_ADMIN_159745`(`id_comment`) USING BTREE,
+  CONSTRAINT `FKLOG_ADMIN_159745` FOREIGN KEY (`id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKLOG_ADMIN_20348` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of log_admin_comment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for log_admin_food
+-- ----------------------------
+DROP TABLE IF EXISTS `log_admin_food`;
+CREATE TABLE `log_admin_food`  (
+  `id_log_monan` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `active_old` int NOT NULL,
+  `active_new` int NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `updated_date` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id_log_monan`) USING BTREE,
+  INDEX `FKLOG_ADMIN_883371`(`id_product`) USING BTREE,
+  INDEX `FKLOG_ADMIN_946781`(`id_admin`) USING BTREE,
+  CONSTRAINT `FKLOG_ADMIN_883371` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKLOG_ADMIN_946781` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of log_admin_food
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for log_admin_merchant
+-- ----------------------------
+DROP TABLE IF EXISTS `log_admin_merchant`;
+CREATE TABLE `log_admin_merchant`  (
+  `id_log_merchant` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_merchant` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `active_old` int NOT NULL,
+  `active_new` int NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `updated_date` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id_log_merchant`) USING BTREE,
+  INDEX `FKLOG_ADMIN_184528`(`id_merchant`) USING BTREE,
+  INDEX `FKLOG_ADMIN_169870`(`id_admin`) USING BTREE,
+  CONSTRAINT `FKLOG_ADMIN_169870` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKLOG_ADMIN_184528` FOREIGN KEY (`id_merchant`) REFERENCES `merchant` (`id_merchant`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of log_admin_merchant
+-- ----------------------------
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1620483847882-1ddddfd8376e4', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, 'Request Open Merchant', '2021-05-08 21:24:07');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1620484116556-b5248cc1c891e', 'AD-1619772958570-a5be4de1e4050bd5630', 'MC-1620372499519-952e927cf4d3ff11b60', -1, 0, ' Request Open Merchant', '2021-05-08 21:28:36');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1620484124877-a5d694cc67d37', 'AD-1619772958570-a5be4de1e4050bd5630', 'MC-1620483753364-eff62f1389cf1c07598', -1, 0, ' Request Open Merchant', '2021-05-08 21:28:44');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1620484133166-8bbfa65610134', 'AD-1619772958570-a5be4de1e4050bd5630', 'MC-1620483774298-279cec933f2bec57aad', -1, 0, ' Request Open Merchant', '2021-05-08 21:28:53');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1620484152272-9284fa8aba6e1', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483793022-8d7064108dcee328ad8', -1, 0, ' Request Open Merchant', '2021-05-08 21:29:12');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1620484179861-048b8f1f854f9', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483813669-bfb5bca040e558c0dfb', -1, 0, ' Request Open Merchant', '2021-05-08 21:29:39');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622003141382-eb723419d0ceb', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:25:41');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622003346173-b28acc2ad60f4', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:29:06');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622003398855-91fa31166c4a5', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:29:58');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622003491896-35ac99e5cc701', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:31:31');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622003768097-edbfa5079b7dd', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:36:08');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622003858857-2058cc00d6ed6', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:37:38');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622004001190-a35749f2ca00b', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:40:01');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622004090130-acaf4af1024fc', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:41:30');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622004213609-f4215c3dac9a2', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:43:33');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622004312039-a0485b30697aa', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:45:12');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622004353752-22d041c8b6da2', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:45:53');
+INSERT INTO `log_admin_merchant` VALUES ('LOG-1622004538771-1cfc9ddf928e6', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'MC-1620483847870-cbf17f0dcc9b842d834', -1, 0, ' ', '2021-05-26 11:48:58');
+
+-- ----------------------------
+-- Table structure for log_banner
+-- ----------------------------
+DROP TABLE IF EXISTS `log_banner`;
+CREATE TABLE `log_banner`  (
+  `id_log_banner` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_banner` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `active_old` int NOT NULL,
+  `active_new` int NOT NULL,
+  PRIMARY KEY (`id_log_banner`) USING BTREE,
+  INDEX `FKLOG_BANNER444166`(`id_banner`) USING BTREE,
+  INDEX `FKLOG_BANNER900686`(`id_admin`) USING BTREE,
+  CONSTRAINT `FKLOG_BANNER444166` FOREIGN KEY (`id_banner`) REFERENCES `banner` (`id_banner`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKLOG_BANNER900686` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of log_banner
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for merchant
+-- ----------------------------
+DROP TABLE IF EXISTS `merchant`;
+CREATE TABLE `merchant`  (
+  `id_merchant` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `name_merchant` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `is_enable` int NOT NULL,
+  `locations` text CHARACTER SET utf8 COLLATE utf8_bin NULL,
+  `phone` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `latitude` float(10, 8) NOT NULL,
+  `longtitude` float(11, 8) NOT NULL,
+  `accept_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime NULL DEFAULT NULL,
+  `reg_date` datetime NOT NULL,
+  `type_business` int NOT NULL,
+  `id_brand` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `openingHours` text CHARACTER SET utf8 COLLATE utf8_bin NULL,
+  PRIMARY KEY (`id_merchant`) USING BTREE,
+  UNIQUE INDEX `phone`(`phone`) USING BTREE,
+  INDEX `FKMERCHANT264480`(`id_user`) USING BTREE,
+  CONSTRAINT `FKMERCHANT264480` FOREIGN KEY (`id_user`) REFERENCES `account` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of merchant
+-- ----------------------------
+INSERT INTO `merchant` VALUES ('MC-1619863661621-a876ddf27da24607dc4', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 'BÒ LẾ RỒ', 1, 0, 'Số 2 Cao Thắng, phường 5, quận 3', '0912512791', 10.73503304, 106.67954254, NULL, NULL, '2021-05-01 17:07:41', 1, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1619928787654-f7297708e4d70989031', 'AC-1619928481144-460e26cb64b183e1ae5', 'Toco Toco', 1, 0, '40/29 Lê Thị Hồng, P. 17, Gò Vấp, TP. HCM', '0912512793', 10.75759792, 106.63258362, NULL, NULL, '2021-05-02 11:13:07', 1, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1619928913220-2ceadca499da8f05102', 'AC-1619928822334-04049d27864be454af6', 'Bánh canh', 0, -1, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '09125127911', 10.75759792, 106.63258362, NULL, NULL, '2021-05-02 11:15:13', 1, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1619929056081-aeed3bb157b44cb7248', 'AC-1619928941309-62e15f613b233140c1e', 'Good Coffee', 0, 0, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '09125127912', 10.75790405, 106.63748932, NULL, NULL, '2021-05-02 11:17:36', 2, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620368732005-99343b8649abb04c9b9', 'AC-1620365579825-dcc7e637be9a4905ce9', 'Rio Coffce', 0, 0, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '09125127321', 10.75660706, 106.64154816, NULL, NULL, '2021-05-07 13:25:32', 2, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620369251189-f14c949f75959474df4', 'AC-1620369170796-3fa75c85e0c2bfa2e54', 'Vuon Xanh', 0, -1, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '09125122371', 10.76145840, 106.67787170, NULL, NULL, '2021-05-07 13:34:11', 3, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620372394816-62c2c8f0c08b16ab155', 'AC-1620372319970-590831bc3c99e61899f', 'Dai Nam', 1, -1, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '09125122123', 10.74252701, 106.70796204, NULL, NULL, '2021-05-07 14:26:34', 2, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620372499519-952e927cf4d3ff11b60', 'AC-1620372434194-c8d1318304c66cd5f76', 'Quán Hủ Tiếu Nhân', 1, -1, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '0912512442', 10.74252701, 106.70796204, '2021-05-08 21:28:36', '2021-05-08 21:28:36', '2021-05-07 14:28:19', 3, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620483753364-eff62f1389cf1c07598', 'AC-1620483426772-d45e76d2df37b36eb0a', 'Cháo', 1, -1, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '0971500320', 10.73512650, 106.71936035, '2021-05-08 21:28:44', '2021-05-08 21:28:44', '2021-05-08 21:22:33', 1, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620483774298-279cec933f2bec57aad', 'AC-1620483441060-4af4f11a6b7d4229cb6', '越南餐厅Nhà Hàng Cố Đô Huế', 1, 0, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '0971500321', 10.72987270, 106.72283173, '2021-05-08 21:28:53', '2021-05-08 21:28:53', '2021-05-08 21:22:54', 2, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620483793022-8d7064108dcee328ad8', 'AC-1620483446618-c53e9ed27dbf09035ab', 'Chả Cá Đế Vương', 0, -1, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '0971500322', 10.72373104, 106.71820831, '2021-05-08 21:29:12', '2021-05-08 21:29:12', '2021-05-08 21:23:13', 3, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620483813669-bfb5bca040e558c0dfb', 'AC-1620483450390-d76e87445b215411b1a', 'Lẩu Gà Ớt Hiểm 109', 1, 0, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '0971500323', 10.72154140, 106.71453094, '2021-05-08 21:29:39', '2021-05-08 21:29:39', '2021-05-08 21:23:33', 1, NULL, NULL);
+INSERT INTO `merchant` VALUES ('MC-1620483847870-cbf17f0dcc9b842d834', 'AC-1620483453582-a7da376f7059317edaf', '브로스비비큐(본점)', 0, 0, '92/20B/20/19 Phạm Hùng, P4, Q8, HCM', '0971500324', 10.71779442, 106.67823792, '2021-05-26 11:48:58', '2021-05-26 11:48:58', '2021-05-08 21:24:07', 1, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for oder_promotion
+-- ----------------------------
+DROP TABLE IF EXISTS `oder_promotion`;
+CREATE TABLE `oder_promotion`  (
+  `id_oderPromotion` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_oder` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_promotion` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_oderPromotion`) USING BTREE,
+  INDEX `FKODER_PROMO197244`(`id_promotion`) USING BTREE,
+  INDEX `FKODER_PROMO51869`(`id_oder`) USING BTREE,
+  CONSTRAINT `FKODER_PROMO197244` FOREIGN KEY (`id_promotion`) REFERENCES `promotion` (`id_promotion`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKODER_PROMO51869` FOREIGN KEY (`id_oder`) REFERENCES `order` (`id_oder`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of oder_promotion
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for order
+-- ----------------------------
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order`  (
+  `id_oder` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_merchant` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_shipper` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `oder_date` datetime NOT NULL,
+  `deli_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `deli_phone` varchar(13) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `deli_fee` float NULL DEFAULT NULL,
+  `price_total` int NOT NULL,
+  `state` int NOT NULL,
+  `count_call` int NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_oder`) USING BTREE,
+  INDEX `FKORDER232188`(`id_shipper`) USING BTREE,
+  INDEX `FKORDER417409`(`id_merchant`) USING BTREE,
+  INDEX `FKORDER126468`(`id_user`) USING BTREE,
+  CONSTRAINT `FKORDER126468` FOREIGN KEY (`id_user`) REFERENCES `account` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKORDER232188` FOREIGN KEY (`id_shipper`) REFERENCES `shippers` (`shipper_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKORDER417409` FOREIGN KEY (`id_merchant`) REFERENCES `merchant` (`id_merchant`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for order_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `order_detail`;
+CREATE TABLE `order_detail`  (
+  `id_detail` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_oder` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `quantity` int NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `unit_price` float NOT NULL,
+  PRIMARY KEY (`id_detail`) USING BTREE,
+  INDEX `FKORDER_DETA472673`(`id_product`) USING BTREE,
+  INDEX `FKORDER_DETA82061`(`id_oder`) USING BTREE,
+  CONSTRAINT `FKORDER_DETA472673` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKORDER_DETA82061` FOREIGN KEY (`id_oder`) REFERENCES `order` (`id_oder`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order_detail
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for product
+-- ----------------------------
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product`  (
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_merchant` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `name_product` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `price` int NOT NULL,
+  `discount` int NOT NULL,
+  `dicriptions` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `created_date` datetime NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `is_enable` tinyint(1) NOT NULL,
+  `update_date` datetime NULL DEFAULT NULL,
+  `type_food` varchar(4) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_product`) USING BTREE,
+  INDEX `FKPRODUCT377043`(`id_merchant`) USING BTREE,
+  CONSTRAINT `FKPRODUCT377043` FOREIGN KEY (`id_merchant`) REFERENCES `merchant` (`id_merchant`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of product
+-- ----------------------------
+INSERT INTO `product` VALUES ('FO-1620039091565-e09d7bc18a1cb7faaaf', 'MC-1619863661621-a876ddf27da24607dc4', 'Bánh Canh Cá Quả', 100000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-03 17:51:31', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620039130530-1344fa247382405b73a', 'MC-1619863661621-a876ddf27da24607dc4', 'Bún bò kiểu Huế', 100000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-03 17:52:10', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620039349677-92513aba9cb0bb868e4', 'MC-1619863661621-a876ddf27da24607dc4', 'Bún Giò Quay', 100000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-03 17:55:49', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620039388139-22dc8477769bb1b1e3a', 'MC-1619863661621-a876ddf27da24607dc4', 'Bún Hành Tây', 100000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-03 17:56:28', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620365513016-91d359af3e6964e1186', 'MC-1619863661621-a876ddf27da24607dc4', 'Bánh Đa Cua', 100000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-07 12:31:53', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620494639875-4ec05ee4b61bab9f63a', 'MC-1620483813669-bfb5bca040e558c0dfb', 'Nem chua', 40000, 0, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-09 00:23:59', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620494660094-cf72fb3be0f54fc6df0', 'MC-1620483813669-bfb5bca040e558c0dfb', 'Cá lóc nướng', 200000, 20, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-09 00:24:20', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620494764889-f015e2cdc76a800f440', 'MC-1620483793022-8d7064108dcee328ad8', 'Cơm sườn bì chả', 45000, 20, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-09 00:26:04', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1620537193052-fabae24a8d654a90e59', 'MC-1620483793022-8d7064108dcee328ad8', 'Bánh ướt', 35000, 20, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-09 12:13:13', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1621653632808-eed76f36d4cf680a695', 'MC-1620483793022-8d7064108dcee328ad8', 'Trà sữa trân châu', 40000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-22 10:20:32', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1621654154531-8f84b08deeb3012b8a7', 'MC-1620483793022-8d7064108dcee328ad8', 'Sữa tươi trân châu đường đen', 40000, 10, 'Bánh hamburger là một loại thức ăn bao gồm bánh mì kẹp có thịt xay hay thịt băm viên ở giữa. Miếng thịt có thể đã được nướng, chiên, hay hun khói và thường được ăn với một số gia vị bên trong cùng với 2 miếng bánh mì hình tròn. Bánh thường được thưởng thứ', '2021-05-22 10:29:14', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623490041744-136d6d4b33434ebc7d9', 'MC-1620483847870-cbf17f0dcc9b842d834', 'Chả Giò', 25000, 5, 'Chả lụa là một món ăn quen thuộc với mọi gia đình, đặc biệt là vào các ngày lễ Tết, ngoài việc ăn kèm với bánh mì hay xôi thịt thì chả lụa còn có thể chế biến thành các món chiên, món kho đều vô cùng hấp dẫn.', '2021-06-12 16:27:21', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623490503767-994d6d6f695420e20c1', 'MC-1620483847870-cbf17f0dcc9b842d834', 'Chả giò thịt', 39000, 0, 'Chả giò chiên nóng hổi giòn tan ngon lành', '2021-06-12 16:35:03', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623490542892-b0cbb082f01b2532c43', 'MC-1620483847870-cbf17f0dcc9b842d834', 'Chả giò tôm', 25000, 0, 'Chả giò chiên nóng hổi giòn tan ngon lành', '2021-06-12 16:35:42', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623501049045-854dfe70053ce9bd210', 'MC-1619928787654-f7297708e4d70989031', 'Sữa Chua Dâu Tằm Hoàng Kim', 39000, 0, 'Toco nhấp nhô', '2021-06-12 19:30:49', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623501106530-e36c5b5f44aa45c9a7d', 'MC-1619928787654-f7297708e4d70989031', 'Sữa Chua Dâu Tằm Hạt Dẻ', 42000, 0, 'Toco nhấp nhô', '2021-06-12 19:31:46', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623575403840-8a46c697711893c45a1', 'MC-1619928787654-f7297708e4d70989031', 'Sữa Chua Trắng', 32000, 5, 'Toco nhấp nhô', '2021-06-13 16:10:03', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623575482701-9422dacf0bf6a35e6dc', 'MC-1619928787654-f7297708e4d70989031', 'Choco Creamcake Hạt dẻ', 40000, 40, 'Toco nhấp nhô', '2021-06-13 16:11:22', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623575526136-52ecf3e1cef6bf69fc0', 'MC-1619928787654-f7297708e4d70989031', 'Chanh Leo Trân Châu Sương Mai', 39000, 10, 'Toco nhấp nhô', '2021-06-13 16:12:06', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623575834651-444cbf28b3002276a41', 'MC-1619928787654-f7297708e4d70989031', 'Hồng Long Xoài Trân Châu Baby', 46000, 45, 'Toco nhấp nhô', '2021-06-13 16:17:14', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623575902425-6c9bd8f59c387633d6c', 'MC-1619928787654-f7297708e4d70989031', 'Probi Bưởi Trân Châu Sương Mai', 42000, 10, 'Toco nhấp nhô', '2021-06-13 16:18:22', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623575966413-0200fb08189f67a7a6c', 'MC-1619928787654-f7297708e4d70989031', 'Trà dâu tằm pha lê tuyết', 49000, 49, 'Toco nhấp nhô', '2021-06-13 16:19:26', 1, 1, NULL, 'main');
+INSERT INTO `product` VALUES ('FO-1623576064716-b2c6c070e3595cc003a', 'MC-1619928787654-f7297708e4d70989031', 'Oolong Trân châu Baby Kem Café', 49000, 49, 'Toco nhấp nhô', '2021-06-13 16:21:04', 1, 1, NULL, 'main');
+
+-- ----------------------------
+-- Table structure for promotion
+-- ----------------------------
+DROP TABLE IF EXISTS `promotion`;
+CREATE TABLE `promotion`  (
+  `id_promotion` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `brand_id` char(36) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `totalAmount` int NOT NULL,
+  `expPrice` int NOT NULL,
+  `totalUser` int NULL DEFAULT NULL,
+  `codeName` char(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `dateStart_At` datetime NOT NULL,
+  `dateEnd_At` datetime NULL DEFAULT NULL,
+  `created_At` datetime NOT NULL,
+  `updated_At` datetime NULL DEFAULT NULL,
+  `isEnable` tinyint NOT NULL,
+  `id_typePromotion` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_promotion`) USING BTREE,
+  UNIQUE INDEX `codeName`(`codeName`) USING BTREE,
+  INDEX `FKPROMOTION26319`(`id_typePromotion`) USING BTREE,
+  CONSTRAINT `FKPROMOTION26319` FOREIGN KEY (`id_typePromotion`) REFERENCES `type_promotion` (`id_typePromotion`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of promotion
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for request_from_merchant
+-- ----------------------------
+DROP TABLE IF EXISTS `request_from_merchant`;
+CREATE TABLE `request_from_merchant`  (
+  `id_request` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `note` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `createAt` datetime NULL DEFAULT NULL,
+  `updateAt` int NULL DEFAULT NULL,
+  `id_merchant` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `state` char(10) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_request`) USING BTREE,
+  INDEX `FKREQUEST_FR147824`(`id_merchant`) USING BTREE,
+  INDEX `FKREQUEST_FR133166`(`id_admin`) USING BTREE,
+  CONSTRAINT `FKREQUEST_FR133166` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKREQUEST_FR147824` FOREIGN KEY (`id_merchant`) REFERENCES `merchant` (`id_merchant`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of request_from_merchant
+-- ----------------------------
+INSERT INTO `request_from_merchant` VALUES ('RQ-1622698659988-404dde38c2eb02d2b4f', 'Tạo hộ món ăn dùm', '2021-06-03 12:37:39', NULL, 'MC-1620483774298-279cec933f2bec57aad', 'AD-1620372073355-2afe768cedaaa1b1453', 'Penning');
+INSERT INTO `request_from_merchant` VALUES ('RQ-1622698695986-b86e6a02183a68141fe', 'Tạo hộ món ăn dùm', '2021-06-03 12:38:15', NULL, 'MC-1620483847870-cbf17f0dcc9b842d834', 'AD-1620372158118-ef2d3cc2b2b6705cf67', 'Penning');
+
+-- ----------------------------
+-- Table structure for shippers
+-- ----------------------------
+DROP TABLE IF EXISTS `shippers`;
+CREATE TABLE `shippers`  (
+  `shipper_id` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `phone` varchar(13) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `is_active` tinyint NOT NULL,
+  `is_enable` tinyint NOT NULL,
+  `longitude` float(11, 8) NOT NULL,
+  `latitude` float(10, 8) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `updated_date` datetime NOT NULL,
+  `state` int NULL DEFAULT NULL,
+  PRIMARY KEY (`shipper_id`) USING BTREE,
+  UNIQUE INDEX `phone`(`phone`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of shippers
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tag
+-- ----------------------------
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag`  (
+  `id_tag` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `tag_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_tag`) USING BTREE,
+  UNIQUE INDEX `tag_name`(`tag_name`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tag
+-- ----------------------------
+INSERT INTO `tag` VALUES ('TG-1619939145487-33edf9bf20949e93bb6', 'Bánh Canh');
+INSERT INTO `tag` VALUES ('TG-1619939166750-f0d22d5b78512b1984a', 'Bún Đậu');
+INSERT INTO `tag` VALUES ('TG-1620494968244-45cbce5c324f73011ff', 'Bữa Chính');
+INSERT INTO `tag` VALUES ('TG-1619939178158-372802bdab3f54bca29', 'Cà Phê');
+INSERT INTO `tag` VALUES ('TG-1619939195125-3646207e0c7aad1e3d2', 'Cá Lóc');
+INSERT INTO `tag` VALUES ('TG-1619939187534-7dcb5042f7e24d43ee0', 'Cá Quả');
+INSERT INTO `tag` VALUES ('TG-1619939151591-ac8562367302782b0d1', 'Hủ Tiếu');
+INSERT INTO `tag` VALUES ('TG-1619939161395-bf965ff0b6ecfeca77b', 'Món Âu');
+INSERT INTO `tag` VALUES ('TG-1619938072144-de8871aa93c5b9df4a8', 'Mỳ Cay');
+INSERT INTO `tag` VALUES ('TG-1623500872892-588692e8a7f1ba5a117', 'Trà sữa');
+INSERT INTO `tag` VALUES ('TG-1619939156130-4876d0e914b334ef5d4', 'Trà sữa trân châu');
+INSERT INTO `tag` VALUES ('TG-1620494950565-50c5078d0ea802d8874', 'Ăn Sáng');
+INSERT INTO `tag` VALUES ('TG-1620494960253-6bb7a64ab01dd720ab7', 'Ăn Trưa');
+INSERT INTO `tag` VALUES ('TG-1619938014460-531cb3ece949519d505', 'Ăn sáng');
+
+-- ----------------------------
+-- Table structure for tag_food
+-- ----------------------------
+DROP TABLE IF EXISTS `tag_food`;
+CREATE TABLE `tag_food`  (
+  `id_hashtag_monan` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_tag` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_product` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_hashtag_monan`) USING BTREE,
+  INDEX `FKTAG_FOOD185971`(`id_product`) USING BTREE,
+  INDEX `FKTAG_FOOD778060`(`id_tag`) USING BTREE,
+  CONSTRAINT `FKTAG_FOOD185971` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKTAG_FOOD778060` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id_tag`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tag_food
+-- ----------------------------
+INSERT INTO `tag_food` VALUES ('TS-1620039091573-11706d50878230a8bfd', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620039091565-e09d7bc18a1cb7faaaf');
+INSERT INTO `tag_food` VALUES ('TS-1620039091573-888afb4fbb10edbe4f1', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620039091565-e09d7bc18a1cb7faaaf');
+INSERT INTO `tag_food` VALUES ('TS-1620039091573-fdae8d3c073c0332e19', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620039091565-e09d7bc18a1cb7faaaf');
+INSERT INTO `tag_food` VALUES ('TS-1620039130536-19208943abb6978d8e4', 'TG-1619939156130-4876d0e914b334ef5d4', 'FO-1620039130530-1344fa247382405b73a');
+INSERT INTO `tag_food` VALUES ('TS-1620039130536-3f41efe912bfc642b56', 'TG-1619939156130-4876d0e914b334ef5d4', 'FO-1620039130530-1344fa247382405b73a');
+INSERT INTO `tag_food` VALUES ('TS-1620039130536-6467faae3d0affbe80c', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620039130530-1344fa247382405b73a');
+INSERT INTO `tag_food` VALUES ('TS-1620039349684-2490f2243717b36d4e3', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620039349677-92513aba9cb0bb868e4');
+INSERT INTO `tag_food` VALUES ('TS-1620039349684-7d4094cbb7aa7c0b3ef', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620039349677-92513aba9cb0bb868e4');
+INSERT INTO `tag_food` VALUES ('TS-1620039349684-a0dd1a325cbe9811704', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620039349677-92513aba9cb0bb868e4');
+INSERT INTO `tag_food` VALUES ('TS-1620039388147-0ce3866ebba47d1f179', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620039388139-22dc8477769bb1b1e3a');
+INSERT INTO `tag_food` VALUES ('TS-1620039388147-d247285d69125cc04d6', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620039388139-22dc8477769bb1b1e3a');
+INSERT INTO `tag_food` VALUES ('TS-1620039388147-e0e4e235e165e914abd', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620039388139-22dc8477769bb1b1e3a');
+INSERT INTO `tag_food` VALUES ('TS-1620365513023-b61c79c419a93cdaa4b', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620365513016-91d359af3e6964e1186');
+INSERT INTO `tag_food` VALUES ('TS-1620365513024-80b0aaa6a851f14c9f6', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620365513016-91d359af3e6964e1186');
+INSERT INTO `tag_food` VALUES ('TS-1620365513024-89f634f07915a24e9b4', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620365513016-91d359af3e6964e1186');
+INSERT INTO `tag_food` VALUES ('TS-1620494639880-6fc3551d7126ab0f0df', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620494639875-4ec05ee4b61bab9f63a');
+INSERT INTO `tag_food` VALUES ('TS-1620494639880-9d0369389c76e770bb0', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620494639875-4ec05ee4b61bab9f63a');
+INSERT INTO `tag_food` VALUES ('TS-1620494639880-dbcca8148c4bd9c8615', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620494639875-4ec05ee4b61bab9f63a');
+INSERT INTO `tag_food` VALUES ('TS-1620494660099-62177549585616111ed', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620494660094-cf72fb3be0f54fc6df0');
+INSERT INTO `tag_food` VALUES ('TS-1620494660099-778a9cee0ffc872f496', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620494660094-cf72fb3be0f54fc6df0');
+INSERT INTO `tag_food` VALUES ('TS-1620494660099-c07e0f6973c354c6eec', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620494660094-cf72fb3be0f54fc6df0');
+INSERT INTO `tag_food` VALUES ('TS-1620494764894-e20538cbb8b32f0fe59', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620494764889-f015e2cdc76a800f440');
+INSERT INTO `tag_food` VALUES ('TS-1620494764894-e648b3373b5d532ce13', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620494764889-f015e2cdc76a800f440');
+INSERT INTO `tag_food` VALUES ('TS-1620494764894-f737e75cabe1328e36d', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620494764889-f015e2cdc76a800f440');
+INSERT INTO `tag_food` VALUES ('TS-1620537193059-1a7a785ae687188e616', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1620537193052-fabae24a8d654a90e59');
+INSERT INTO `tag_food` VALUES ('TS-1620537193059-4fd1f3610e5a7818cb7', 'TG-1619939161395-bf965ff0b6ecfeca77b', 'FO-1620537193052-fabae24a8d654a90e59');
+INSERT INTO `tag_food` VALUES ('TS-1620537193059-51064f1f9802d42531a', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1620537193052-fabae24a8d654a90e59');
+INSERT INTO `tag_food` VALUES ('TS-1621653632814-6432553e02733457220', 'TG-1619939166750-f0d22d5b78512b1984a', 'FO-1621653632808-eed76f36d4cf680a695');
+INSERT INTO `tag_food` VALUES ('TS-1621653632815-5ae45d30b98c3d361ac', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1621653632808-eed76f36d4cf680a695');
+INSERT INTO `tag_food` VALUES ('TS-1621654154534-3101baa0b59c2f4fc4e', 'TG-1619939187534-7dcb5042f7e24d43ee0', 'FO-1621654154531-8f84b08deeb3012b8a7');
+INSERT INTO `tag_food` VALUES ('TS-1621654154534-3b7cb5df983d914eaee', 'TG-1619939156130-4876d0e914b334ef5d4', 'FO-1621654154531-8f84b08deeb3012b8a7');
+INSERT INTO `tag_food` VALUES ('TS-1623490041750-3b5723931d69e94d7f7', 'TG-1620494968244-45cbce5c324f73011ff', 'FO-1623490041744-136d6d4b33434ebc7d9');
+INSERT INTO `tag_food` VALUES ('TS-1623490503772-4a871871ad35595928f', 'TG-1620494960253-6bb7a64ab01dd720ab7', 'FO-1623490503767-994d6d6f695420e20c1');
+INSERT INTO `tag_food` VALUES ('TS-1623490503772-c6962035b50bffb64d2', 'TG-1620494968244-45cbce5c324f73011ff', 'FO-1623490503767-994d6d6f695420e20c1');
+INSERT INTO `tag_food` VALUES ('TS-1623490542897-2f56661251c0f36d491', 'TG-1620494968244-45cbce5c324f73011ff', 'FO-1623490542892-b0cbb082f01b2532c43');
+INSERT INTO `tag_food` VALUES ('TS-1623490542897-38b1b4910ea4babe99b', 'TG-1620494960253-6bb7a64ab01dd720ab7', 'FO-1623490542892-b0cbb082f01b2532c43');
+INSERT INTO `tag_food` VALUES ('TS-1623501049049-97c57f80876199df154', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623501049045-854dfe70053ce9bd210');
+INSERT INTO `tag_food` VALUES ('TS-1623501106535-4a6e09acbf7b5991358', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623501106530-e36c5b5f44aa45c9a7d');
+INSERT INTO `tag_food` VALUES ('TS-1623575403846-ce05f20bfc9b6f70db7', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623575403840-8a46c697711893c45a1');
+INSERT INTO `tag_food` VALUES ('TS-1623575482706-1ab3963cfb4d5beadf7', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623575482701-9422dacf0bf6a35e6dc');
+INSERT INTO `tag_food` VALUES ('TS-1623575526141-462af64aa35aa7f16ed', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623575526136-52ecf3e1cef6bf69fc0');
+INSERT INTO `tag_food` VALUES ('TS-1623575834657-4d120b9b1e340475cf2', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623575834651-444cbf28b3002276a41');
+INSERT INTO `tag_food` VALUES ('TS-1623575902429-03e14869e66f3926da5', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623575902425-6c9bd8f59c387633d6c');
+INSERT INTO `tag_food` VALUES ('TS-1623575966418-12018228ad4f518c01f', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623575966413-0200fb08189f67a7a6c');
+INSERT INTO `tag_food` VALUES ('TS-1623576064721-aacc839b0bcf2b13a30', 'TG-1623500872892-588692e8a7f1ba5a117', 'FO-1623576064716-b2c6c070e3595cc003a');
+
+-- ----------------------------
+-- Table structure for token
+-- ----------------------------
+DROP TABLE IF EXISTS `token`;
+CREATE TABLE `token`  (
+  `id_token` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_user` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `state` tinyint(1) NOT NULL,
+  `reg_date` datetime NOT NULL,
+  `token` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_token`) USING BTREE,
+  UNIQUE INDEX `token`(`token`) USING BTREE,
+  INDEX `FKTOKEN591508`(`id_user`) USING BTREE,
+  CONSTRAINT `FKTOKEN591508` FOREIGN KEY (`id_user`) REFERENCES `account` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of token
+-- ----------------------------
+INSERT INTO `token` VALUES ('TK-1619854967253-d34e2f991d0df5f1ea4', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 0, '2021-05-01 14:42:47', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYxOTg1NDk2NywiZXhwIjozMjQ3NDg1OTM0fQ.YVduYWwopuXQvig-WAyZfHLb23bkcv2vyIOBrrLnMKY');
+INSERT INTO `token` VALUES ('TK-1619861180482-544600dbbbaa330a1b5', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 0, '2021-05-01 16:26:20', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYxOTg2MTE4MCwiZXhwIjozMjQ3NDk4MzYwfQ.9O7xZjxlKGI0Seh98yPeeMYVHRJOFIEr9r1EMBBOPq8');
+INSERT INTO `token` VALUES ('TK-1619928481154-0a3daf0bef993eb7860', 'AC-1619928481144-460e26cb64b183e1ae5', 0, '2021-05-02 11:08:01', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTkyODQ4MTE0NC00NjBlMjZjYjY0YjE4M2UxYWU1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjE5OTI4NDgxLCJleHAiOjMyNDc2MzI5NjJ9.jY6IWYyByPe5uXy9ZK5xqFfzFsTvvjiEDPJZijqFbF4');
+INSERT INTO `token` VALUES ('TK-1619928822342-4264e5bbb6e8487a747', 'AC-1619928822334-04049d27864be454af6', 0, '2021-05-02 11:13:42', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTkyODgyMjMzNC0wNDA0OWQyNzg2NGJlNDU0YWY2Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjE5OTI4ODIyLCJleHAiOjMyNDc2MzM2NDR9.2VkntvZ6bd2F4UpJbtlwatX0wH73lZ9HlCst_ItzD2A');
+INSERT INTO `token` VALUES ('TK-1619928941315-46418d8f73bac9c4c57', 'AC-1619928941309-62e15f613b233140c1e', 0, '2021-05-02 11:15:41', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTkyODk0MTMwOS02MmUxNWY2MTNiMjMzMTQwYzFlIiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjE5OTI4OTQxLCJleHAiOjMyNDc2MzM4ODJ9.xS154QoUIzBY4hXQYtbGgvY2_KetL8bebG6iEDVfGhc');
+INSERT INTO `token` VALUES ('TK-1619933440440-5ee72fd493daf44d84a', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-05-02 12:30:40', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYxOTkzMzQ0MCwiZXhwIjozMjQ3NjQyODgwfQ.bajTNTCk9BvBD_YLmNvwCvssHo7WJmv7BypVsui8UGA');
+INSERT INTO `token` VALUES ('TK-1619943013658-0f3d269f9902e18c249', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-05-02 15:10:13', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYxOTk0MzAxMywiZXhwIjozMjQ3NjYyMDI2fQ.XEkU7aQI2OcTJSZMPV9cUkfpt0xlBiYlZYFhtJARU24');
+INSERT INTO `token` VALUES ('TK-1620013136030-31471df2ecc231cec35', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-05-03 10:38:56', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDAxMzEzNiwiZXhwIjozMjQ3ODAyMjcyfQ.yDr76kIO_tnQgGa_IjXqTMAuEVvlyKhl3qmT29gj8TA');
+INSERT INTO `token` VALUES ('TK-1620055269442-8c1b25b3e4f9fc1e7d0', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-05-03 22:21:09', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDA1NTI2OSwiZXhwIjozMjQ3ODg2NTM4fQ.hoet1LwcbQ-2c-5Y0dQv93sDVkRdw55pJJiV6XpmCbQ');
+INSERT INTO `token` VALUES ('TK-1620365579834-054237d8c2d2f65035e', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 12:32:59', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwMzY1NTc5LCJleHAiOjMyNDg1MDcxNTh9.AaSv_ZphudRzPx_jUEIjfQIUd9G3CYyW6kPwNoy9fq0');
+INSERT INTO `token` VALUES ('TK-1620366518590-13f3cd26a4f2db4a2ca', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 12:48:38', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2NjUxOCwiZXhwIjozMjQ4NTA5MDM2fQ.ug7dhhIZQs1W0G-yqF-430tS83zSF7MoYYGEGLRKs_E');
+INSERT INTO `token` VALUES ('TK-1620366649013-b905352419c6b031a0e', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 12:50:49', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2NjY0OSwiZXhwIjozMjQ4NTA5Mjk4fQ.uuLLbUQel0HEb144Cha3QBGfhk_dJVmusfUjBHxskGg');
+INSERT INTO `token` VALUES ('TK-1620366724193-89adfd82eea8a73e76b', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 12:52:04', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2NjcyNCwiZXhwIjozMjQ4NTA5NDQ4fQ.p26hQz9w6HDe8cExI-bwptWx4778rvChd_-4JnXpB8c');
+INSERT INTO `token` VALUES ('TK-1620366868935-d5583558139a32368ad', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 12:54:28', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2Njg2OCwiZXhwIjozMjQ4NTA5NzM2fQ.6Ix-5WJukd0qw6StmxKqIs8Kn-kxcJSCrP_hqxq-8iM');
+INSERT INTO `token` VALUES ('TK-1620367085336-c3ec2a281c36c770de0', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 12:58:05', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2NzA4NSwiZXhwIjozMjQ4NTEwMTcwfQ.FU1QAdI3IyEJUftIm8OpqXo6BgMN7FKYwuNT_FGkQUI');
+INSERT INTO `token` VALUES ('TK-1620368420292-efbf42588143591bb0e', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 13:20:20', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2ODQyMCwiZXhwIjozMjQ4NTEyODQwfQ.oE2iGMysnGPyZf89WSFjZSoDAKz_hhoBkdXKy8H-hKA');
+INSERT INTO `token` VALUES ('TK-1620368723066-896923f56321ddd0a5b', 'AC-1620365579825-dcc7e637be9a4905ce9', 0, '2021-05-07 13:25:23', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2NTU3OTgyNS1kY2M3ZTYzN2JlOWE0OTA1Y2U5Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDM2ODcyMywiZXhwIjozMjQ4NTEzNDQ2fQ.eeHXbhhs2T6T_YniLjYkNVDZwyc_M0MxT1zcc7N5Ymg');
+INSERT INTO `token` VALUES ('TK-1620369170807-dbeedf397414c1567f2', 'AC-1620369170796-3fa75c85e0c2bfa2e54', 0, '2021-05-07 13:32:50', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM2OTE3MDc5Ni0zZmE3NWM4NWUwYzJiZmEyZTU0Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwMzY5MTcwLCJleHAiOjMyNDg1MTQzNDB9.pvw-VDwRMq-U8gvr8EEIJiCPPtLGNt0zbmq31who_Ew');
+INSERT INTO `token` VALUES ('TK-1620372319982-99c74d43093285722c9', 'AC-1620372319970-590831bc3c99e61899f', 0, '2021-05-07 14:25:19', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM3MjMxOTk3MC01OTA4MzFiYzNjOTllNjE4OTlmIiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwMzcyMzE5LCJleHAiOjMyNDg1MjA2Mzh9.VmhHLZ0aRzzBI3I-6tIFjdxEDLut35q0cKiT-c9BDBg');
+INSERT INTO `token` VALUES ('TK-1620372434199-0428bbb1d39146b5240', 'AC-1620372434194-c8d1318304c66cd5f76', 0, '2021-05-07 14:27:14', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDM3MjQzNDE5NC1jOGQxMzE4MzA0YzY2Y2Q1Zjc2Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwMzcyNDM0LCJleHAiOjMyNDg1MjA4Njh9.iEYU8SiXpfV5wYAl1cKgA9_zgtT3XviCBWLYtTear38');
+INSERT INTO `token` VALUES ('TK-1620483426781-7a8bf84efa792764cff', 'AC-1620483426772-d45e76d2df37b36eb0a', 0, '2021-05-08 21:17:06', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQyNjc3Mi1kNDVlNzZkMmRmMzdiMzZlYjBhIiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwNDgzNDI2LCJleHAiOjMyNDg3NDI4NTJ9.vYCDppHLHjFCEHLlYaCZEgW7ERfVcWTLLV3nwGEzofU');
+INSERT INTO `token` VALUES ('TK-1620483441068-dfe1dab514294ee18ab', 'AC-1620483441060-4af4f11a6b7d4229cb6', 0, '2021-05-08 21:17:21', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ0MTA2MC00YWY0ZjExYTZiN2Q0MjI5Y2I2Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwNDgzNDQxLCJleHAiOjMyNDg3NDI4ODJ9.8EViXbONvNMOACjutBEQ4rAr_ITZ93bCPLP5R_QXU0g');
+INSERT INTO `token` VALUES ('TK-1620483446624-9517dba01d1e50aebdb', 'AC-1620483446618-c53e9ed27dbf09035ab', 0, '2021-05-08 21:17:26', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ0NjYxOC1jNTNlOWVkMjdkYmYwOTAzNWFiIiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwNDgzNDQ2LCJleHAiOjMyNDg3NDI4OTJ9.Cj1Zetwm9gO12wofB-xnXI0mJq-vQh9wlfi2AWqPB0Y');
+INSERT INTO `token` VALUES ('TK-1620483450397-86959954ce9ce4810fd', 'AC-1620483450390-d76e87445b215411b1a', 0, '2021-05-08 21:17:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MDM5MC1kNzZlODc0NDViMjE1NDExYjFhIiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwNDgzNDUwLCJleHAiOjMyNDg3NDI5MDB9.NYUi8UGUEuJZ1wZxllUbP6hwXLpmChxs5dUxN3rjroI');
+INSERT INTO `token` VALUES ('TK-1620483453589-204274c73338fc441d4', 'AC-1620483453582-a7da376f7059317edaf', 0, '2021-05-08 21:17:33', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIwNDgzNDUzLCJleHAiOjMyNDg3NDI5MDZ9.9R-JljcOVioUYVMWwrcxFGqDfGYnVnyGa_6lrsU1T6M');
+INSERT INTO `token` VALUES ('TK-1620494624821-cc5d47d5a6c7dbad2eb', 'AC-1620483450390-d76e87445b215411b1a', 1, '2021-05-09 00:23:44', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MDM5MC1kNzZlODc0NDViMjE1NDExYjFhIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDQ5NDYyNCwiZXhwIjozMjQ4NzY1MjQ4fQ.FuX-4FZlJgQfKfYX0QAvEba96vTwXww6mqkS-c3q3tY');
+INSERT INTO `token` VALUES ('TK-1620494736714-96cfe3ce5ae28a2f0d1', 'AC-1620483446618-c53e9ed27dbf09035ab', 1, '2021-05-09 00:25:36', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ0NjYxOC1jNTNlOWVkMjdkYmYwOTAzNWFiIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMDQ5NDczNiwiZXhwIjozMjQ4NzY1NDcyfQ.Uo0liALlToKpsDan3xxdOVDuoI76tXzxaOLpkgseHFw');
+INSERT INTO `token` VALUES ('TK-1622641526406-945fac01781f56644b3', 'AC-1620483446618-c53e9ed27dbf09035ab', 1, '2021-06-02 20:45:26', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ0NjYxOC1jNTNlOWVkMjdkYmYwOTAzNWFiIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjY0MTUyNiwiZXhwIjozMjUzMDU5MDUyfQ.sXwfKGuH2MRqjyfMVe1OJraOn_rlbltZtGPzicsw4lI');
+INSERT INTO `token` VALUES ('TK-1622698592130-571195d9719daf73ae5', 'AC-1620483441060-4af4f11a6b7d4229cb6', 1, '2021-06-03 12:36:32', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ0MTA2MC00YWY0ZjExYTZiN2Q0MjI5Y2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjY5ODU5MiwiZXhwIjozMjUzMTczMTg0fQ.1iogwi6nfi9nnRoAA7zp5qjm5Kk0q3QW_wjLmRIVDLk');
+INSERT INTO `token` VALUES ('TK-1622698686827-04cf6cb314c818d2f59', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 12:38:06', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjY5ODY4NiwiZXhwIjozMjUzMTczMzcyfQ.j9_14CddUhXfStjEgQsvmrN3xo0ST61fLXWTcITD1Tw');
+INSERT INTO `token` VALUES ('TK-1622735910181-68a7f0a632668b2b4ff', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 22:58:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNTkxMCwiZXhwIjozMjUzMjQ3ODIwfQ.CeqnIVFqTdHkFav73wVYbpFNxmWFw0OMbV-7nPQpmgo');
+INSERT INTO `token` VALUES ('TK-1622736275189-465eb40689bee4b4c38', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:04:35', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjI3NSwiZXhwIjozMjUzMjQ4NTUwfQ.Du6xmcLaQeHKETcLNTkiE7WJGNd-jB2WG9W2VbBtns8');
+INSERT INTO `token` VALUES ('TK-1622736290523-1a5c81ab4289c54a36e', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:04:50', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjI5MCwiZXhwIjozMjUzMjQ4NTgwfQ.uSiGFUEuyTQ8vj0-l7EiusB70ELqLB_K2IFhE7ry6-I');
+INSERT INTO `token` VALUES ('TK-1622736297186-ade38d4160c7104b9e3', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:04:57', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjI5NywiZXhwIjozMjUzMjQ4NTk0fQ.WSE2YohXi5o37qCT25v3oNMr66GmyjH3LEnAuoGrN8g');
+INSERT INTO `token` VALUES ('TK-1622736578350-c0c9a0552555a7e5de9', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:09:38', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjU3OCwiZXhwIjozMjUzMjQ5MTU2fQ.mI5kjdPjkYHKcuBxkNEzPvgDvESeZnEv7mqjZ5A5Ueo');
+INSERT INTO `token` VALUES ('TK-1622736702012-6872e61aa7d6858e1e4', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:11:42', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjcwMiwiZXhwIjozMjUzMjQ5NDA0fQ.zIWhm2UEvG9fu7HMolcPwAil79LCyv_5cPwlJkdVX3M');
+INSERT INTO `token` VALUES ('TK-1622736757885-247e6f3761b9d4bb5a1', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:12:37', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjc1NywiZXhwIjozMjUzMjQ5NTE0fQ.ihuz5cVklXBQ9rqn2pWvPUY1xnJLtjjmLjOQCiBaBBE');
+INSERT INTO `token` VALUES ('TK-1622736764343-37c656357741e9b9251', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:12:44', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjc2NCwiZXhwIjozMjUzMjQ5NTI4fQ.fZXo1cvLPc5ewFg3CDZ8stCs2VT_Dw13fPC7k3zSJkw');
+INSERT INTO `token` VALUES ('TK-1622736903006-c083741302a5d54ac21', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:15:03', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNjkwMywiZXhwIjozMjUzMjQ5ODA2fQ.iQRraOCeUU9xZp02E6Ve3peYRwxsJAPykHqB_bJ1ub0');
+INSERT INTO `token` VALUES ('TK-1622737023807-522105bb28179bc9dbf', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:17:03', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzAyMywiZXhwIjozMjUzMjUwMDQ2fQ.1btYlX9fIm9MSA_FkB4DXhHM5lvXbKRmCv1a3_w7g2o');
+INSERT INTO `token` VALUES ('TK-1622737098628-7374b9f08d62efb555e', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:18:18', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzA5OCwiZXhwIjozMjUzMjUwMTk2fQ.c4R9RDyboWaZsqWGFZ74e-zoR5RotGUuNLeFXO6f6a8');
+INSERT INTO `token` VALUES ('TK-1622737304052-d6665b6a5cb9ade9507', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:21:44', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzMwNCwiZXhwIjozMjUzMjUwNjA4fQ.4vkBgpvIqdHqZwBbXldZGxHWS9UR57CviVx-kWovm_A');
+INSERT INTO `token` VALUES ('TK-1622737356013-52a05b4f44f10352fb2', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:22:36', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzM1NiwiZXhwIjozMjUzMjUwNzEyfQ.9QnfFdViRBh3CfuYPmUnlJVyaaLnzmaZJsBWJnSWBTs');
+INSERT INTO `token` VALUES ('TK-1622737472974-4af95e037fe7b8468a5', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:24:32', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzQ3MiwiZXhwIjozMjUzMjUwOTQ0fQ.vtstF98xvdzu6NWzK54jUr-k9dfxVofInbC561Sa0w4');
+INSERT INTO `token` VALUES ('TK-1622737594694-3120b1a7f836d35395b', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:26:34', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzU5NCwiZXhwIjozMjUzMjUxMTg4fQ.x40aHy02A3ZZ0breDjKVhtxAudXcPpN1KMHxawo0KQs');
+INSERT INTO `token` VALUES ('TK-1622737635181-c3bb2fa09866f0d9c54', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:27:15', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzYzNSwiZXhwIjozMjUzMjUxMjcwfQ.ajIr-p8-lYaZs1r2VCaYmyR3k_e4kojPBRYcFkuU5Wg');
+INSERT INTO `token` VALUES ('TK-1622737988421-71a3bc5aaa3b2cec705', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:33:08', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczNzk4OCwiZXhwIjozMjUzMjUxOTc2fQ.nPFAgxN8jhHfrCla17cil7c4B8x33kUZTCJhx-DoOpM');
+INSERT INTO `token` VALUES ('TK-1622738069140-b7abba053b75f9624b1', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:34:29', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczODA2OSwiZXhwIjozMjUzMjUyMTM4fQ.TLNt7iHUdk_HCel8ngEi1HyBIhhDGDx87UyqkbRp0j4');
+INSERT INTO `token` VALUES ('TK-1622738086089-b16700d91af80d79561', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:34:46', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczODA4NiwiZXhwIjozMjUzMjUyMTcyfQ.LbLmBgjwymLZmhdE_c86imEOITl4uj7XfDcdEUL0xS4');
+INSERT INTO `token` VALUES ('TK-1622739231282-ef3fac2a89ebea0ffcf', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-03 23:53:51', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczOTIzMSwiZXhwIjozMjUzMjU0NDYyfQ.6Myz9L0hHH-5ACBgl0rCbcm29QogpWwnFviWpCaThQg');
+INSERT INTO `token` VALUES ('TK-1622739771105-92edccc9732a5a09c75', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:02:51', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjczOTc3MSwiZXhwIjozMjUzMjU1NTQyfQ.g1mdFcuHxTFcuXOYhNWeSPK2DL5CGLR-gb71V9Viq3Q');
+INSERT INTO `token` VALUES ('TK-1622740014500-288ba37b3f4ad5e5404', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:06:54', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc0MDAxNCwiZXhwIjozMjUzMjU2MDI4fQ.N2MZ7TC0NnqeYRmo5uvMBYJ053y1bkNPoo5MipH9UAA');
+INSERT INTO `token` VALUES ('TK-1622740069940-55df5ebeb97de61e2ab', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:07:49', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc0MDA2OSwiZXhwIjozMjUzMjU2MTM4fQ.zxHtSTJayESUx_JqTtSuDX-c3PLiuYjPm5CiPOauOXQ');
+INSERT INTO `token` VALUES ('TK-1622740116690-68469404ce7d291350a', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:08:36', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc0MDExNiwiZXhwIjozMjUzMjU2MjMyfQ.lgxI1cV9GMuDU3Egl2Ilo_VxUi2u956Lb2LpuIpBeq8');
+INSERT INTO `token` VALUES ('TK-1622740124848-820d63b490fb3497c59', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:08:44', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc0MDEyNCwiZXhwIjozMjUzMjU2MjQ4fQ.AVKaBuxQ43sJvKM2Eppj-Jp-ouS-h-Ra6ulybHVLREM');
+INSERT INTO `token` VALUES ('TK-1622741054711-2fcbbac0cc143fdce08', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:24:14', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc0MTA1NCwiZXhwIjozMjUzMjU4MTA4fQ.WJ16m57Is5vrVlFcg1GJQ76XqJnbca4EiZ6bMqWQ76Y');
+INSERT INTO `token` VALUES ('TK-1622741377469-b206af6567c8a772b86', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 00:29:37', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc0MTM3NywiZXhwIjozMjUzMjU4NzU0fQ.FRcdnkA9pX7rPyEiF5Eiphcycmoj4rwvGPVIvxhjgj4');
+INSERT INTO `token` VALUES ('TK-1622786291528-e0278793bb1ea230b52', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-06-04 12:58:11', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc4NjI5MSwiZXhwIjozMjUzMzQ4NTgyfQ.6oz7TvxUGveB14V818tH1lwcDPMdQRn9vYDjhwB6KgA');
+INSERT INTO `token` VALUES ('TK-1622790250672-27d364a438e5ed85af6', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-04 14:04:10', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc5MDI1MCwiZXhwIjozMjUzMzU2NTAwfQ.DSOa9T-Llbwqnp4k7DUlI1yN8c93jlm97svw0MXeOhw');
+INSERT INTO `token` VALUES ('TK-1622790680605-c4ee472e0cf0a51ef03', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-06-04 14:11:20', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMjc5MDY4MCwiZXhwIjozMjUzMzU3MzYwfQ.rDpKiLid98UP9uX8vndGWiaUEPC5lw47ff0unc3KN_4');
+INSERT INTO `token` VALUES ('TK-1623310264316-52aa0d0d5ea78cb37af', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 14:31:04', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjp0cnVlLCJpc19Hb29nbGVBY2NvdW50IjpmYWxzZSwiaXNfRmFjZWJvb2tBY2NvdW50IjpmYWxzZSwiaWF0IjoxNjIzMzEwMjY0LCJleHAiOjMyNTQzOTY1Mjh9.II2HX4Ptd03mE-A1FafsR5VpAo7Rnz1-WL9UQfr2Iws');
+INSERT INTO `token` VALUES ('TK-1623311648474-25e75909023c9034049', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 14:54:08', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMTY0OCwiZXhwIjozMjU0Mzk5Mjk2fQ.uxPsuanQTZ1ZCdv3NkUHvAI9hUDHXe7x-tqcLEuLEVc');
+INSERT INTO `token` VALUES ('TK-1623312993148-e7755c922491acc2fcd', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:16:33', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMjk5MywiZXhwIjozMjU0NDAxOTg2fQ.7Jv5RwOUHxs8jC6472GEpfiiiLKNxZOkB87crKwSmcU');
+INSERT INTO `token` VALUES ('TK-1623313010971-e1377995b39e2537d46', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:16:50', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzAxMCwiZXhwIjozMjU0NDAyMDIwfQ.RytD_BRdSxFx9be1g9-RL508DVsT0lgt81khptX-PoE');
+INSERT INTO `token` VALUES ('TK-1623313175369-c2800428a3b887bc41f', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:19:35', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzE3NSwiZXhwIjozMjU0NDAyMzUwfQ.zpYW5tvv5lGseQTqmAK4bysSWk_84CyJtp_pdk77WJE');
+INSERT INTO `token` VALUES ('TK-1623313282554-b6a26b59c734456b8fd', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:21:22', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzI4MiwiZXhwIjozMjU0NDAyNTY0fQ.quH1STpgdOyZR5V9yKwRyhattyu6WxNHE4W2C1irv2c');
+INSERT INTO `token` VALUES ('TK-1623313290015-060b64fe0d3301f0ec4', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:21:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzI5MCwiZXhwIjozMjU0NDAyNTgwfQ.OvBR4ZPr9Ih-dY__0WlcuEWTeZVEvlM3iMwBZsSk23Y');
+INSERT INTO `token` VALUES ('TK-1623313705594-54da8a39fdc129832a1', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:28:25', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzcwNSwiZXhwIjozMjU0NDAzNDEwfQ.a6lUvYjtkYQp2wxxK825q7vV9725GcQzQ92MWR_-l9g');
+INSERT INTO `token` VALUES ('TK-1623313776827-7d216cd8cddc2bc3b61', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:29:36', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzc3NiwiZXhwIjozMjU0NDAzNTUyfQ.-Uo7n_obm-EnRMwbrzjug1vx4K5Ulur_Lq9qhldzyfM');
+INSERT INTO `token` VALUES ('TK-1623313796682-8a6912e08191c557162', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:29:56', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzc5NiwiZXhwIjozMjU0NDAzNTkyfQ.PP7M1OrreeL5SEHbXrKuuiu-pD9sgv61odt5kMVicro');
+INSERT INTO `token` VALUES ('TK-1623313798033-1cfc232ee3905a178ae', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:29:58', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzc5OCwiZXhwIjozMjU0NDAzNTk2fQ.yN__irUv4G6tWNU9KXAxUFGl3lRZHaVRYVzv3mADjO4');
+INSERT INTO `token` VALUES ('TK-1623313800171-1b3e86249a2422777cd', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:30:00', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxMzgwMCwiZXhwIjozMjU0NDAzNjAwfQ.3kbkJcHThxMZgsFe00PNyTJ_KbbcwjsA8mGswgOlPxI');
+INSERT INTO `token` VALUES ('TK-1623314105413-04a7844b97ed1dc5b1b', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:35:05', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNDEwNSwiZXhwIjozMjU0NDA0MjEwfQ.VeyKnRVt1TBG-HXgSuL3Jfmn0L88vZhYOTuUc83982I');
+INSERT INTO `token` VALUES ('TK-1623314560299-fd7500098d23ee6812b', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:42:40', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNDU2MCwiZXhwIjozMjU0NDA1MTIwfQ.IzWJbSGtHA2tgpIxUMq6X50YbIZAKud_b-dVAxe-bk0');
+INSERT INTO `token` VALUES ('TK-1623315250201-4eaaeaf54a5bdf30ce8', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:54:10', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNTI1MCwiZXhwIjozMjU0NDA2NTAwfQ.JL2R2z6YvqyQoKmDDaH2mxhybAhX97211wFXluB2cPg');
+INSERT INTO `token` VALUES ('TK-1623315418561-1b088b7af0982f34550', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:56:58', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNTQxOCwiZXhwIjozMjU0NDA2ODM2fQ.ZYF4_u1fUHQuzRfCGR2Idv1WvMnstM0kHYd2vCs4Y04');
+INSERT INTO `token` VALUES ('TK-1623315463342-b94ab69b55e3bcdce0e', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 15:57:43', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNTQ2MywiZXhwIjozMjU0NDA2OTI2fQ.XMd0E5APNZkDNkedBjVhf2EQ4sP1thqz4SdkMBY-lUc');
+INSERT INTO `token` VALUES ('TK-1623316080543-8e9852edae136d2d024', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 16:08:00', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNjA4MCwiZXhwIjozMjU0NDA4MTYwfQ.PL7grJAIZ0_Nbs_1ch9V45LtTWBTS-9tQpwRDAX90as');
+INSERT INTO `token` VALUES ('TK-1623316857665-b65f5d4cda6feec2df3', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 16:20:57', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNjg1NywiZXhwIjozMjU0NDA5NzE0fQ.tiPT82o5IMt1O5hJ94ejNrIVFsmugFrcH4XPPpdHgE8');
+INSERT INTO `token` VALUES ('TK-1623317391785-4e99492e99b575e4330', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 16:29:51', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxNzM5MSwiZXhwIjozMjU0NDEwNzgyfQ.DO2DPFjf_R1xF0QD3CXaBFBhB08dH3RDueXAgOgTXuE');
+INSERT INTO `token` VALUES ('TK-1623318654385-a9882b2e2a263db9355', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 16:50:54', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMxODY1NCwiZXhwIjozMjU0NDEzMzA4fQ.iZRG0uaqg1GQoV4ZgIujHE8tdqybjuuoaqcIR7oLA2U');
+INSERT INTO `token` VALUES ('TK-1623326044642-8c046949db8004ed4e0', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-10 18:54:04', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzMyNjA0NCwiZXhwIjozMjU0NDI4MDg4fQ.h5EUvPrucNjb5aAHTce1IB0-p6DmoG4EgrshJAPVAPA');
+INSERT INTO `token` VALUES ('TK-1623345781177-f4fa66d047d00ace5ed', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 00:23:01', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM0NTc4MSwiZXhwIjozMjU0NDY3NTYyfQ.SUS-rkqGXgrbO7pz4LJ4N7KU48FbNdVFeYFrg3z5cL4');
+INSERT INTO `token` VALUES ('TK-1623385075053-a479a1138bd5af93686', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 11:17:55', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM4NTA3NSwiZXhwIjozMjU0NTQ2MTUwfQ.m8kk1iAcRir7b063QUUduy7ILCgPCCjPiTbSBge1aAI');
+INSERT INTO `token` VALUES ('TK-1623386766569-f05a9dd144818c4524e', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 11:46:06', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM4Njc2NiwiZXhwIjozMjU0NTQ5NTMyfQ.LTKrUsgbLvtle2QpYSjrrtP34JEm1NViAs_eJCgv0fc');
+INSERT INTO `token` VALUES ('TK-1623395006005-3d4f015106f0b635b8c', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:03:26', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NTAwNiwiZXhwIjozMjU0NTY2MDEyfQ.iJzqfrBMna7KpR3WyVFWl8jQxmNmhJv9SJUDl4WmnIs');
+INSERT INTO `token` VALUES ('TK-1623395059249-87c84ca4b9ea272b1bc', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:04:19', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NTA1OSwiZXhwIjozMjU0NTY2MTE4fQ.1XBv1x9GxfPWgbTdkcV2LQImIIoV0syCqYNWwjZLjbE');
+INSERT INTO `token` VALUES ('TK-1623395527896-738550dccd02df18a95', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:12:07', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NTUyNywiZXhwIjozMjU0NTY3MDU0fQ.JpRJy7Bde7lZEmVvbynnsmif2cdYVVPVwaoQX5_h9aE');
+INSERT INTO `token` VALUES ('TK-1623397024992-16bb57473f12e23243c', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:37:04', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzAyNCwiZXhwIjozMjU0NTcwMDQ4fQ.0ljx718tUiHLTZvLrq1lZqqlyAMHPcMI-nimg551EUo');
+INSERT INTO `token` VALUES ('TK-1623397257677-0743185175649eaf569', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:40:57', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzI1NywiZXhwIjozMjU0NTcwNTE0fQ.OIK6jTYVN3bWQzXXKa21cHronr-d4VDin6gTyQnoqgo');
+INSERT INTO `token` VALUES ('TK-1623397315078-e72fdec72e0470eb202', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:41:55', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzMxNSwiZXhwIjozMjU0NTcwNjMwfQ.iAQIkoALOGtknnkaJJEgz_pFp5zCHEBlrRQIlQRPiRw');
+INSERT INTO `token` VALUES ('TK-1623397410211-fc4c5d6f7065ef99f0a', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:43:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzQxMCwiZXhwIjozMjU0NTcwODIwfQ.yUenIeUNDvqyAcDZLREDRq9nNHWdGMQFn5orOD3cy_c');
+INSERT INTO `token` VALUES ('TK-1623397521460-b0ebf97b2db64f2b608', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:45:21', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzUyMSwiZXhwIjozMjU0NTcxMDQyfQ._qojCx0RJH4GN9WWDynN49TOR6JIUunL7OA3q3UqdDo');
+INSERT INTO `token` VALUES ('TK-1623397552991-5e63409fa7056cfc0d7', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:45:52', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzU1MiwiZXhwIjozMjU0NTcxMTA0fQ.9FUCgyM8s4E0NAdIN1ZdBwGcJ_4JPexsPp4pbvZRrtw');
+INSERT INTO `token` VALUES ('TK-1623397602250-a6591cb74d26cb8d899', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:46:42', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzYwMiwiZXhwIjozMjU0NTcxMjA0fQ.vjECm1JJaSxg4RCaxZq78FU2fCzxm-EYBhGYZdBhScg');
+INSERT INTO `token` VALUES ('TK-1623397657770-f8a57de93bd64f8170b', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:47:37', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzY1NywiZXhwIjozMjU0NTcxMzE0fQ.6QMRxTag9KgCfQ7dLL1kHJ3CM20AwE_hhzvDJSCeeWQ');
+INSERT INTO `token` VALUES ('TK-1623397823705-653d4539da576587e01', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:50:23', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5NzgyMywiZXhwIjozMjU0NTcxNjQ2fQ.zbg9_I8WCo21CrFvsOyqacWYUPErST54oUgffi-E4fs');
+INSERT INTO `token` VALUES ('TK-1623398325540-4ff83b126c2f6b4ab91', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:58:45', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5ODMyNSwiZXhwIjozMjU0NTcyNjUwfQ.OnQ5kUn6a0VUQ_poQSlHfFXZYWaqG0mwOH3BGsuSePw');
+INSERT INTO `token` VALUES ('TK-1623398347636-d563cf70a30560d746e', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:59:07', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5ODM0NywiZXhwIjozMjU0NTcyNjk0fQ.8r3XV3_CuVgmx4DAU_BEFUox5WzzM5oHVk7c_pgClhQ');
+INSERT INTO `token` VALUES ('TK-1623398398387-e17065a8979459a9286', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 14:59:58', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5ODM5OCwiZXhwIjozMjU0NTcyNzk2fQ.Mz7G4wKSPwJE5QtyI15eywT6f0DFeviypK2eox2JtHM');
+INSERT INTO `token` VALUES ('TK-1623398434133-aab19b03e043d033a76', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 15:00:34', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzM5ODQzNCwiZXhwIjozMjU0NTcyODY4fQ.2Rsh7mUyWeqfEoN6MJv4teaY9NFdM3W8aZGP_Z9lVco');
+INSERT INTO `token` VALUES ('TK-1623403470308-0290ccbe0dd0d84304d', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-11 16:24:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQwMzQ3MCwiZXhwIjozMjU0NTgyOTQwfQ.jm7LPS71mWeSLAYImhnZGEP08IMvrHQ6ifHIAdflclE');
+INSERT INTO `token` VALUES ('TK-1623403620964-f4f51e9f192bf6f64ec', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 16:27:00', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQwMzYyMCwiZXhwIjozMjU0NTgzMjQwfQ.TZgkkBX9H9SfFyunFsvriKIBguOF9Y-hA_XPgLxi6fA');
+INSERT INTO `token` VALUES ('TK-1623408359883-1e98e5df703b479add1', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 17:45:59', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQwODM1OSwiZXhwIjozMjU0NTkyNzE4fQ.yBx2OKq2B370fwJbix64GChBP6mvAFgampZ4s3NgwZc');
+INSERT INTO `token` VALUES ('TK-1623410812834-5a01eaf9881fb3ec5c3', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 18:26:52', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQxMDgxMiwiZXhwIjozMjU0NTk3NjI0fQ.Fpn29W1HFacxiFlb2vmj3Cxi81N6RgAl7UqhJbm6n0I');
+INSERT INTO `token` VALUES ('TK-1623415319989-6f306c2bc588240da54', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-11 19:41:59', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQxNTMxOSwiZXhwIjozMjU0NjA2NjM4fQ.g3Ug0fn67fHxHun394Q2x2iPPV5G7NVwrSlYfwyDuXU');
+INSERT INTO `token` VALUES ('TK-1623431180078-f0ff18ebef8df6cc122', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 00:06:20', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQzMTE4MCwiZXhwIjozMjU0NjM4MzYwfQ.KraPCSGpjVlvk1ReSw7zrUd87wPY_zdVcur9WabRV_A');
+INSERT INTO `token` VALUES ('TK-1623431608519-2122ccef8a1ef723e9f', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 00:13:28', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQzMTYwOCwiZXhwIjozMjU0NjM5MjE2fQ.6jjrcjAgdT6yaqtTj8o_OSo9wUTasMuIZ-CTW8tDUEQ');
+INSERT INTO `token` VALUES ('TK-1623434130089-d24e182954375f8cae5', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 00:55:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQzNDEzMCwiZXhwIjozMjU0NjQ0MjYwfQ.WLLm5XYtsRSW4W5_Mxuw6KjQHY0v2Er7mVEbeNcMhdU');
+INSERT INTO `token` VALUES ('TK-1623434291810-0218147cf1d4045a411', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 00:58:11', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQzNDI5MSwiZXhwIjozMjU0NjQ0NTgyfQ.i9jHjBq9ECpA8RJQjVlVSYw08fl4_Dpzhfin-OLZ1Sg');
+INSERT INTO `token` VALUES ('TK-1623489487345-c5ec49249419ccedd4a', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-12 16:18:07', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQ4OTQ4NywiZXhwIjozMjU0NzU0OTc0fQ.35AR47uRef4ipLf9PiUQl_UGRiRvLzgEQbJtyEEYjVk');
+INSERT INTO `token` VALUES ('TK-1623495302675-9d424e839b8f4d3eb4a', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 17:55:02', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQ5NTMwMiwiZXhwIjozMjU0NzY2NjA0fQ.9EzI1UNWd3c5uRT5IiDIsYhVBaKbcIit0sEjxSV4YBY');
+INSERT INTO `token` VALUES ('TK-1623495479721-3398cf5164b12d00193', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 17:57:59', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQ5NTQ3OSwiZXhwIjozMjU0NzY2OTU4fQ.DFzE77gQVEopFVDZcJ2Cv3RZgqkFofbSmqkmhGTjh9o');
+INSERT INTO `token` VALUES ('TK-1623497220383-899ba1fbe13b2c7d435', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 18:27:00', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQ5NzIyMCwiZXhwIjozMjU0NzcwNDQwfQ.BfUbTfVnjebPb3ryfwfI94VGZRgG-rzYAc9SpDe0LfM');
+INSERT INTO `token` VALUES ('TK-1623499678771-b4dc7c17150a110b0e2', 'AC-1619719339521-3cdc1d492bf0e13bcb6', 1, '2021-06-12 19:07:58', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTcxOTMzOTUyMS0zY2RjMWQ0OTJiZjBlMTNiY2I2Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQ5OTY3OCwiZXhwIjozMjU0Nzc1MzU2fQ.hvpp95ZiPTnETZDfTYLhakB0nwklAggvbZHrFDcf-4A');
+INSERT INTO `token` VALUES ('TK-1623499906086-30cdc8cd8169042beff', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-12 19:11:46', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzQ5OTkwNiwiZXhwIjozMjU0Nzc1ODEyfQ.5OueeeL_kIH21ZBZ8ymmSeRWeecqi5p96GA6-Te1zI4');
+INSERT INTO `token` VALUES ('TK-1623500128667-81a4d1265a16b1099fc', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-12 19:15:28', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzUwMDEyOCwiZXhwIjozMjU0Nzc2MjU2fQ.PQ_sZt0Ptg2YFZJX2KsOEX3slU4E-CeuCZsKdqCm9gs');
+INSERT INTO `token` VALUES ('TK-1623500146747-588abf7a05f126be626', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-12 19:15:46', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzUwMDE0NiwiZXhwIjozMjU0Nzc2MjkyfQ.nazN-1QDN0_3SqCS8I6cI8lmcuU9pzW6PHEQ8VFxbW0');
+INSERT INTO `token` VALUES ('TK-1623500235601-4af142f3d93f34c7a0a', 'AC-1620483453582-a7da376f7059317edaf', 1, '2021-06-12 19:17:15', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMDQ4MzQ1MzU4Mi1hN2RhMzc2ZjcwNTkzMTdlZGFmIiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzUwMDIzNSwiZXhwIjozMjU0Nzc2NDcwfQ.DtDdVF63BJvjBlG7tkkKYGxGm0sCSKrFz88z0vEpOdU');
+INSERT INTO `token` VALUES ('TK-1623500305428-5554d8481c20d3b4bea', 'AC-1619928481144-460e26cb64b183e1ae5', 1, '2021-06-12 19:18:25', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYxOTkyODQ4MTE0NC00NjBlMjZjYjY0YjE4M2UxYWU1Iiwicm9sZSI6MSwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzUwMDMwNSwiZXhwIjozMjU0Nzc2NjEwfQ.jnf3S-XvLCkuTfhmv9FQYleXMdZCNLLayZ5FxYtNmk4');
+INSERT INTO `token` VALUES ('TK-1623679129705-56d0ae4211d74f6dbe4', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-14 20:58:49', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzY3OTEyOSwiZXhwIjozMjU1MTM0MjU4fQ.DBt79MdJxde56V2PLimlsxWIHZgmE92ab6ZdO56sPWw');
+INSERT INTO `token` VALUES ('TK-1623690390980-24261b0c4a27738ad7d', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-15 00:06:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzY5MDM5MCwiZXhwIjozMjU1MTU2NzgwfQ.opy0emNT4nCnotaWAOv-dPZNbiF44kvDaMNuhHcoR58');
+INSERT INTO `token` VALUES ('TK-1623734050233-9d643570c52c4ced8c4', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-15 12:14:10', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzczNDA1MCwiZXhwIjozMjU1MjQ0MTAwfQ.gBLzvEACs0zD8w5BAc2kKFetJjjWXEONIkIZdmRPaAw');
+INSERT INTO `token` VALUES ('TK-1623750975010-9bb3b4b120602e7a980', 'AC-1623310264309-8f7de2c47c095416a65', 1, '2021-06-15 16:56:15', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiQUMtMTYyMzMxMDI2NDMwOS04ZjdkZTJjNDdjMDk1NDE2YTY1Iiwicm9sZSI6MCwiaXNfYWN0aXZlIjoxLCJpc19Hb29nbGVBY2NvdW50IjowLCJpc19GYWNlYm9va0FjY291bnQiOjAsImlhdCI6MTYyMzc1MDk3NSwiZXhwIjozMjU1Mjc3OTUwfQ.MfWIIY92vOqHoAiz0qesNKF2Ky4zCFJgZsncwNbkxQk');
+
+-- ----------------------------
+-- Table structure for token_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `token_admin`;
+CREATE TABLE `token_admin`  (
+  `id_token` int NOT NULL AUTO_INCREMENT,
+  `id_admin` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `state` tinyint(1) NOT NULL,
+  `reg_date` datetime NOT NULL,
+  `token` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_token`) USING BTREE,
+  INDEX `FKTOKEN_ADMI785658`(`id_admin`) USING BTREE,
+  CONSTRAINT `FKTOKEN_ADMI785658` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of token_admin
+-- ----------------------------
+INSERT INTO `token_admin` VALUES (1, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-03 23:45:40', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDA2MDM0MCwiZXhwIjozMjQ3ODk2NjgwfQ.p78BD-7h4gCvd_sg5-UhDHXYbM2ZiaFoiKV8eWjgPZk');
+INSERT INTO `token_admin` VALUES (2, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-03 23:57:05', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDA2MTAyNSwiZXhwIjozMjQ3ODk4MDUwfQ.raAuWcel70hnne6hV2ufziT-qNXYUKaFkiqzKqRmFQ4');
+INSERT INTO `token_admin` VALUES (3, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-03 23:57:07', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDA2MTAyNywiZXhwIjozMjQ3ODk4MDU0fQ.NFbx6xFWsdi3cEWEwr1TgY-ChXT1UwCOI-sspCd1yjY');
+INSERT INTO `token_admin` VALUES (4, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-03 23:57:08', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDA2MTAyOCwiZXhwIjozMjQ3ODk4MDU2fQ.4-4t_chnlxTQ-N3qsj5LnDl_H5cGpNCEzmOCX-9cAaY');
+INSERT INTO `token_admin` VALUES (5, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 01:06:10', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDMyNDM3MCwiZXhwIjozMjQ4NDI0NzQwfQ.4decrjTH5w55_1iKy0qLIj7ffx4wld3DiHS0NXFqDTo');
+INSERT INTO `token_admin` VALUES (6, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 16:26:56', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDM3OTYxNiwiZXhwIjozMjQ4NTM1MjMyfQ.FaCgMAhCNzXyh6XCPS1BiLNcvncilSS8iLkSiQ24bFg');
+INSERT INTO `token_admin` VALUES (7, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 16:27:12', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDM3OTYzMiwiZXhwIjozMjQ4NTM1MjY0fQ.EZIOFVp8y0hd9T0Vva7M_X-AIInri5MreWjLDIqDleg');
+INSERT INTO `token_admin` VALUES (8, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 16:29:32', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDM3OTc3MiwiZXhwIjozMjQ4NTM1NTQ0fQ.TKSjLxLPiZ222lBe_wE8CsY-dJrnBfeYb_M1fnrGEI0');
+INSERT INTO `token_admin` VALUES (9, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 16:29:36', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDM3OTc3NiwiZXhwIjozMjQ4NTM1NTUyfQ.pMrs47H58kYqJo7Q5alyf8I1Piz320efAIDiOkGBzxM');
+INSERT INTO `token_admin` VALUES (10, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 17:00:59', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDM4MTY1OSwiZXhwIjozMjQ4NTM5MzE4fQ.meilkKX5c3KjqL988RZbw-x7D-mY03FJS-aHiQQS1jQ');
+INSERT INTO `token_admin` VALUES (11, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 21:33:34', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDM5ODAxNCwiZXhwIjozMjQ4NTcyMDI4fQ.ylKFg6dM_hmDTqdXQKcuhXwGtuU1sLowHeAq4S5TLV4');
+INSERT INTO `token_admin` VALUES (12, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 22:17:01', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDQwMDYyMSwiZXhwIjozMjQ4NTc3MjQyfQ.uIxomPotnH--j0_E-R6Pdw4NDsXa3UcFirHjiNE61V0');
+INSERT INTO `token_admin` VALUES (13, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-05-07 22:19:54', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjA0MDA3OTQsImV4cCI6MzI0ODU3NzU4OH0.BpwNZDb5yqPc1zAZfBAxp3w0l8DvvPkYnFZNxiSrNus');
+INSERT INTO `token_admin` VALUES (14, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-05-07 22:20:02', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjA0MDA4MDIsImV4cCI6MzI0ODU3NzYwNH0.A_a_DCwe7bBnWRX_q2BEUO5PHMX7EJPQrGrwRnwxeO0');
+INSERT INTO `token_admin` VALUES (15, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-07 22:20:09', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDQwMDgwOSwiZXhwIjozMjQ4NTc3NjE4fQ.uUKCTxKsct6MA2isvPKLfG0QOBgFD6cFh7oItRcetXE');
+INSERT INTO `token_admin` VALUES (16, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-12 16:27:55', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDgxMTY3NSwiZXhwIjozMjQ5Mzk5MzUwfQ.pfXUEPOHgdItz0qpZLjjs6uZEUFbcvkW-OvKRVyZc_Q');
+INSERT INTO `token_admin` VALUES (17, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-12 16:30:48', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDgxMTg0OCwiZXhwIjozMjQ5Mzk5Njk2fQ.cL7GMfnWHeA00BeBCqy-e2Atn95nhhl1DR3HqHvqNKw');
+INSERT INTO `token_admin` VALUES (18, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-05-12 16:30:58', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjA4MTE4NTgsImV4cCI6MzI0OTM5OTcxNn0.VkOK_V7a33gyPIIhaU_sK0WDYBqL4tTstHVferLokvQ');
+INSERT INTO `token_admin` VALUES (19, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-14 00:10:13', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMDkyNTgxMywiZXhwIjozMjQ5NjI3NjI2fQ.mzs-sfBy7P1nmj7L815It5MIk1XfNm7CwODBQ3c43uw');
+INSERT INTO `token_admin` VALUES (20, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-05-14 00:40:32', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjA5Mjc2MzIsImV4cCI6MzI0OTYzMTI2NH0.QnwkO1DPJets5FhTR78Uz25b8j8Vb4vuNICbNV8VSvI');
+INSERT INTO `token_admin` VALUES (21, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-05-14 00:40:35', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjA5Mjc2MzUsImV4cCI6MzI0OTYzMTI3MH0.7zJsIWkSZNi4CzBzG4U7WivO-5LZxKnyHg3pA3aC02Q');
+INSERT INTO `token_admin` VALUES (22, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-05-24 22:05:32', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjE4Njg3MzIsImV4cCI6MzI1MTUxMzQ2NH0.D-7F6N9M7HrU_Kv4hoyAytaGnDB1pH33mfor_Ui8oCs');
+INSERT INTO `token_admin` VALUES (23, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-24 23:20:51', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMTg3MzI1MSwiZXhwIjozMjUxNTIyNTAyfQ.xcOxI84LT5vIhziAmqYBySUFiwjK05rQ3mXut0-src0');
+INSERT INTO `token_admin` VALUES (24, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-30 20:56:12', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjM4Mjk3MiwiZXhwIjozMjUyNTQxOTQ0fQ.cVdZJWHWnVPyx5GSTgYiPzf_iZwpDtnN6BB0JqwTovg');
+INSERT INTO `token_admin` VALUES (25, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-30 21:11:05', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjM4Mzg2NSwiZXhwIjozMjUyNTQzNzMwfQ.ZDCLLvsDjcp2lbZ4vlJmFpWSCrLYmzFiyVdsVozrWSY');
+INSERT INTO `token_admin` VALUES (26, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-30 21:12:12', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjM4MzkzMiwiZXhwIjozMjUyNTQzODY0fQ.MaWGGt2xroCFDgFcIMUomlDhXUhDzQ8ZJu0KkRDrH_Y');
+INSERT INTO `token_admin` VALUES (27, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-30 21:59:13', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjM4Njc1MywiZXhwIjozMjUyNTQ5NTA2fQ.r2PZRU8Rf-MNay4Kr_AaZKLssg1yb7TZaxsZ3cHNhc0');
+INSERT INTO `token_admin` VALUES (28, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-05-30 22:13:18', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjM4NzU5OCwiZXhwIjozMjUyNTUxMTk2fQ.21YF0iR43pAWcvCRD5qky49WWCcC3cdESS_xdm-YTao');
+INSERT INTO `token_admin` VALUES (29, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-02 15:14:42', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjYyMTY4MiwiZXhwIjozMjUzMDE5MzY0fQ.Ewj613ecedz9GqX3-t7R2XkEBfWigVXQTdU3mpvl-Ak');
+INSERT INTO `token_admin` VALUES (30, 'AD-1620372073355-2afe768cedaaa1b1453', 1, '2021-06-02 15:42:20', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIwNzMzNTUtMmFmZTc2OGNlZGFhYTFiMTQ1MyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJ0aGllbi50QGdtYWlsLmNvbSIsImlhdCI6MTYyMjYyMzM0MCwiZXhwIjozMjUzMDIyNjgwfQ.TYneniwY8BqOJh4H8Y33OqcS2x-O0IdNPKS8Tr0RAhc');
+INSERT INTO `token_admin` VALUES (31, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-02 18:02:31', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjYzMTc1MSwiZXhwIjozMjUzMDM5NTAyfQ.TnqlQkB1pW1bdNQCoKg_PBQCFmc48JUJvy05yic9t_A');
+INSERT INTO `token_admin` VALUES (32, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-03 12:18:01', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMjY5NzQ4MSwiZXhwIjozMjUzMTcwOTYyfQ.pv-R1cTA3QOyFCo57jvn-qsaWjOrkGiNcih7CSl5LhE');
+INSERT INTO `token_admin` VALUES (33, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-06-03 12:18:07', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjI2OTc0ODcsImV4cCI6MzI1MzE3MDk3NH0.JAI7TwbINyK0OmUJa3TC2t4lIreJcrsFPg4-czvGYqM');
+INSERT INTO `token_admin` VALUES (34, 'AD-1620372158118-ef2d3cc2b2b6705cf67', 1, '2021-06-03 12:46:32', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIxNTgxMTgtZWYyZDNjYzJiMmI2NzA1Y2Y2NyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJkdXkuZEBnbWFpbC5jb20iLCJpYXQiOjE2MjI2OTkxOTIsImV4cCI6MzI1MzE3NDM4NH0.pZQk53uBrGOtgFQPHtTHk2JRiWWii8OaCRRjNRDqqfk');
+INSERT INTO `token_admin` VALUES (35, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-09 23:54:09', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMzI1NzY0OSwiZXhwIjozMjU0MjkxMjk4fQ.NMeQ_t_PKOUz4oYl1b9ac5IgF40SvI4967ubZV2oQtU');
+INSERT INTO `token_admin` VALUES (36, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-11 15:54:48', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMzQwMTY4OCwiZXhwIjozMjU0NTc5Mzc2fQ.T_1fTvm_tS8uxN73Z1tNpimfrn5P8_yhkJKrU-K4mT4');
+INSERT INTO `token_admin` VALUES (37, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-11 15:58:41', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMzQwMTkyMSwiZXhwIjozMjU0NTc5ODQyfQ.pIXw4I_43JCO6al0VEe0D3Flr_aIpz_POTCTqTQqqSo');
+INSERT INTO `token_admin` VALUES (38, 'AD-1620372073355-2afe768cedaaa1b1453', 1, '2021-06-11 16:25:30', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MjAzNzIwNzMzNTUtMmFmZTc2OGNlZGFhYTFiMTQ1MyIsInJvbGUiOjEsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJ0aGllbi50QGdtYWlsLmNvbSIsImlhdCI6MTYyMzQwMzUzMCwiZXhwIjozMjU0NTgzMDYwfQ.zHw4BOWFFiCRnGt9_-SMXGLNKgv4XtaaAIFBYmZ7p0s');
+INSERT INTO `token_admin` VALUES (39, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-11 17:51:55', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMzQwODcxNSwiZXhwIjozMjU0NTkzNDMwfQ.vlPO5ANMnPUTkVUzRGK63x41mzQRv1hpNX5eT0nAiWg');
+INSERT INTO `token_admin` VALUES (40, 'AD-1619772958570-a5be4de1e4050bd5630', 1, '2021-06-17 14:04:50', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6IkFELTE2MTk3NzI5NTg1NzAtYTViZTRkZTFlNDA1MGJkNTYzMCIsInJvbGUiOjIsImlzX2VuYWJsZSI6MSwiZW1haWwiOiJhZG1pbkBib29mb29kLmNvbSIsImlhdCI6MTYyMzkxMzQ5MCwiZXhwIjozMjU1NjAyOTgwfQ.iZbxv_TGhcJVlCUR-G05sYrVjEBQNA2MwLse0PnF3cs');
+
+-- ----------------------------
+-- Table structure for transaction__payment
+-- ----------------------------
+DROP TABLE IF EXISTS `transaction__payment`;
+CREATE TABLE `transaction__payment`  (
+  `id_transaction` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_oder` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `status` int NOT NULL,
+  `created_date` datetime NOT NULL,
+  `completed_date` datetime NOT NULL,
+  `type_payment` char(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `fee_amount` float NULL DEFAULT NULL,
+  `discount_amount` int NULL DEFAULT NULL,
+  `partner_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_transaction`) USING BTREE,
+  INDEX `FKTRANSACTIO132372`(`id_oder`) USING BTREE,
+  CONSTRAINT `FKTRANSACTIO132372` FOREIGN KEY (`id_oder`) REFERENCES `order` (`id_oder`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of transaction__payment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for type_promotion
+-- ----------------------------
+DROP TABLE IF EXISTS `type_promotion`;
+CREATE TABLE `type_promotion`  (
+  `id_typePromotion` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `created_At` datetime NULL DEFAULT NULL,
+  `updated_At` datetime NULL DEFAULT NULL,
+  `isEnable` tinyint NULL DEFAULT NULL,
+  `typeName` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `discription` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id_typePromotion`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of type_promotion
+-- ----------------------------
+
+-- ----------------------------
+-- Function structure for lat_lng_distance
+-- ----------------------------
+DROP FUNCTION IF EXISTS `lat_lng_distance`;
+delimiter ;;
+CREATE FUNCTION `lat_lng_distance`(lat1 FLOAT, lng1 FLOAT, lat2 FLOAT, lng2 FLOAT)
+ RETURNS float
+  DETERMINISTIC
+BEGIN
+        RETURN 6371 * 2 * ASIN(SQRT(
+            POWER(SIN((lat1 - abs(lat2)) * pi()/180 / 2),
+            2) + COS(lat1 * pi()/180 ) * COS(abs(lat2) *
+            pi()/180) * POWER(SIN((lng1 - lng2) *
+            pi()/180 / 2), 2) ));
+    END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _attribute_by_idproduct
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_attribute_by_idproduct`;
+delimiter ;;
+CREATE PROCEDURE `_attribute_by_idproduct`(in
+	idproduct char(36))
+BEGIN
+SELECT attribute_values.id_attr, attributes.`name`, attributes.type_pick
+FROM attribute_values 
+INNER JOIN attributes ON attribute_values.id_attr = attributes.id_attr 
+WHERE attribute_values.id_product = idproduct GROUP BY attributes.id_attr;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _find_infor_merchant
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_find_infor_merchant`;
+delimiter ;;
+CREATE PROCEDURE `_find_infor_merchant`(in
+	keyword VARCHAR(255))
+BEGIN
+SELECT merchant.id_merchant,
+merchant.name_merchant,
+merchant.id_user,
+account.email,
+merchant.reg_date AS merchant_at, merchant.locations As address_merchant,
+(SELECT CONCAT_WS(' ', account.last_name, account.first_name)) AS athor,
+account.phone, account.is_enable, account.create_date AS account_at
+FROM merchant JOIN account on account.id_user = merchant.id_user 
+WHERE merchant.name_merchant 
+LIKE keyword OR account.phone = keyword;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _find_product_byIdMerAndTag
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_find_product_byIdMerAndTag`;
+delimiter ;;
+CREATE PROCEDURE `_find_product_byIdMerAndTag`(in
+	_id_merchant char(36), tag VARCHAR(255))
+BEGIN
+SELECT product.id_merchant, product.id_product,
+(
+	SELECT image_food.url_image 
+	FROM image_food WHERE image_food.id_product = product.id_product
+	ORDER BY RAND() LIMIT 1
+) as url
+,product.price, product.discount
+FROM product 
+JOIN tag_food ON product.id_product = tag_food.id_product
+JOIN merchant ON product.id_merchant = merchant.id_merchant
+WHERE product.id_merchant = _id_merchant
+and tag_food.id_tag = (SELECT tag.id_tag FROM tag WHERE tag.tag_name LIKE tag);
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _find_task_merchant
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_find_task_merchant`;
+delimiter ;;
+CREATE PROCEDURE `_find_task_merchant`(in
+	_id_admin char(36))
+BEGIN
+	SELECT DISTINCT LOG.id_merchant 
+	FROM log_admin_merchant AS LOG 
+	JOIN merchant AS MER WHERE LOG.id_admin = _id_admin AND MER.is_enable = -1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _food_on_item_search_tag
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_food_on_item_search_tag`;
+delimiter ;;
+CREATE PROCEDURE `_food_on_item_search_tag`(in
+	_id_merchant char(36), _tag varchar(25))
+BEGIN
+SELECT product.name_product, product.id_product, product.price, product.discount,
+(SELECT IM.url_image FROM image_food AS IM RIGHT JOIN product AS P ON IM.id_product = P.id_product WHERE P.id_merchant = merchant.id_merchant ORDER BY RAND() LIMIT 1) AS img
+FROM product 
+JOIN tag_food On product.id_product = tag_food.id_product 
+JOIN merchant	ON product.id_merchant = merchant.id_merchant 
+WHERE tag_food.id_tag = (SELECT tag.id_tag FROM tag WHERE tag.tag_name LIKE _tag) 
+	AND merchant.id_merchant = _id_merchant;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _get_Req_Admin
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_get_Req_Admin`;
+delimiter ;;
+CREATE PROCEDURE `_get_Req_Admin`(IN `id_admin` VARCHAR(36))
+BEGIN
+SELECT 
+MER.id_merchant,
+MER.phone,
+MER.name_merchant,
+MER.locations,
+MER.type_business,
+MER.reg_date,
+account.email,
+account.id_user,
+(SELECT CONCAT_WS(' ', account.last_name, account.first_name)) AS athor,
+REQ.id_request,
+REQ.note,
+REQ.state,
+REQ.createAt
+FROM `request_from_merchant` AS REQ 
+JOIN merchant AS MER 
+JOIN account ON MER.id_user = account.id_user
+WHERE REQ.id_merchant = MER.id_merchant 
+AND REQ.id_admin = id_admin 
+AND state = "Penning";
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _get_Task_Admin
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_get_Task_Admin`;
+delimiter ;;
+CREATE PROCEDURE `_get_Task_Admin`(IN `id_admin` VARCHAR(36))
+BEGIN
+SELECT 
+merchant.id_merchant,
+merchant.phone,
+merchant.name_merchant,
+merchant.locations,
+merchant.type_business,
+merchant.reg_date,
+account.email,
+account.id_user,
+(SELECT CONCAT_WS(' ', account.last_name, account.first_name)) AS athor
+FROM log_admin_merchant
+RIGHT JOIN merchant ON log_admin_merchant.id_merchant = merchant.id_merchant
+JOIN account ON merchant.id_user = account.id_user
+WHERE log_admin_merchant.id_admin LIKE id_admin AND active_old = -1 And merchant.is_enable = -1 GROUP BY log_admin_merchant.id_merchant;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _get_Top_Merchant
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_get_Top_Merchant`;
+delimiter ;;
+CREATE PROCEDURE `_get_Top_Merchant`()
+BEGIN
+   SELECT merchant.id_merchant, merchant.name_merchant, merchant.is_active, merchant.type_business,
+			(SELECT IM.url_image FROM image_food AS IM RIGHT JOIN product AS P ON IM.id_product = P.id_product WHERE P.id_merchant = merchant.id_merchant  ORDER BY RAND() LIMIT 1) AS img,
+			(SELECT AVG(product.price) FROM product where product.id_merchant = merchant.id_merchant)as TotalPrice, 
+			(SELECT GROUP_CONCAT(name_product SEPARATOR ", ") AS listfood FROM product WHERE id_merchant = merchant.id_merchant) AS listfood
+	FROM merchant WHERE merchant.is_enable=0 ;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _infor_merchant
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_infor_merchant`;
+delimiter ;;
+CREATE PROCEDURE `_infor_merchant`(in
+	lat FLOAT(10,8), lon FLOAT(11,8), idmerchant char(36))
+BEGIN
+SELECT merchant.id_merchant,
+merchant.name_merchant,
+merchant.locations,
+merchant.latitude,
+merchant.longtitude,
+merchant.is_active,
+merchant.phone,
+merchant.is_enable,
+merchant.reg_date AS createdAt,
+ROUND ((SELECT lat_lng_distance(lat, lon,merchant.latitude,merchant.longtitude)),2) AS distance,
+(SELECT IM.url_image FROM image_food AS IM RIGHT JOIN product AS P ON IM.id_product = P.id_product WHERE P.id_merchant = merchant.id_merchant ORDER BY RAND() LIMIT 1) AS cover
+FROM merchant WHERE merchant.id_merchant = idmerchant;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _restaurants_near
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_restaurants_near`;
+delimiter ;;
+CREATE PROCEDURE `_restaurants_near`(in
+	lat FLOAT(10,8), lon FLOAT(11,8), radius int)
+BEGIN
+   SELECT merchant.id_merchant, merchant.name_merchant, merchant.is_active, merchant.type_business,
+			(SELECT IM.url_image FROM image_food AS IM RIGHT JOIN product AS P ON IM.id_product = P.id_product WHERE P.id_merchant = merchant.id_merchant ORDER BY RAND() LIMIT 1) AS img,
+			(SELECT GROUP_CONCAT(name_product SEPARATOR ", ") AS listfood FROM product WHERE id_merchant = merchant.id_merchant) AS listfood,
+			ROUND ((SELECT lat_lng_distance(lat, lon,merchant.latitude,merchant.longtitude)),2) AS distance
+	FROM merchant WHERE merchant.is_enable=0 HAVING distance < radius;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _search_by_keyword
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_search_by_keyword`;
+delimiter ;;
+CREATE PROCEDURE `_search_by_keyword`(in
+	lat FLOAT(10,8), lon FLOAT(11,8), keyword VARCHAR(255))
+BEGIN
+SELECT 
+merchant.id_merchant,
+merchant.name_merchant,
+merchant.type_business,
+merchant.is_active,
+(SELECT GROUP_CONCAT(name_product SEPARATOR ", ") AS listfood FROM product WHERE id_merchant = merchant.id_merchant) AS listfood,
+ROUND ((SELECT lat_lng_distance(lat, lon,merchant.latitude,merchant.longtitude)),2) AS distance,
+P.name_product, 
+P.id_product, 
+P.price,
+P.is_active AS is_activeP,
+P.discount,
+P.dicriptions,
+(SELECT image_food.url_image FROM image_food WHERE image_food.id_product = P.id_product ORDER BY RAND() LIMIT 1) AS img
+FROM product AS P
+JOIN merchant	ON P.id_merchant = merchant.id_merchant 
+WHERE UPPER(P.name_product) LIKE keyword OR UPPER(merchant.name_merchant) LIKE keyword AND merchant.is_enable =0;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for _search_by_tag
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `_search_by_tag`;
+delimiter ;;
+CREATE PROCEDURE `_search_by_tag`(in
+	lat FLOAT(10,8), lon FLOAT(11,8), tag VARCHAR(255))
+BEGIN
+SELECT 
+merchant.id_merchant,
+merchant.name_merchant,
+merchant.type_business,
+merchant.is_active,
+(SELECT GROUP_CONCAT(name_product SEPARATOR ", ") AS listfood FROM product WHERE id_merchant = merchant.id_merchant) AS listfood,
+ROUND ((SELECT lat_lng_distance(lat, lon,merchant.latitude,merchant.longtitude)),2) AS distance,
+P.name_product, 
+P.id_product, 
+P.price,
+P.is_active,
+P.discount,
+P.dicriptions,
+(SELECT image_food.url_image FROM image_food WHERE image_food.id_product = P.id_product ORDER BY RAND() LIMIT 1) AS img
+FROM product AS P
+JOIN tag_food On P.id_product = tag_food.id_product 
+JOIN merchant	ON P.id_merchant = merchant.id_merchant 
+WHERE tag_food.id_tag = (SELECT tag.id_tag FROM tag WHERE tag.tag_name LIKE tag) AND merchant.is_enable =0;
+END
+;;
+delimiter ;
+
+SET FOREIGN_KEY_CHECKS = 1;

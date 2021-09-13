@@ -1,0 +1,37 @@
+.merchant__enable {
+    background: dodgerblue;
+    width: 155px;
+}
+
+.merchant__disable {
+    background: #df4955;
+}
+
+.btn__1 {
+    width: 100px;
+    height: 40px;
+    outline: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    border: unset;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn__1:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+}
+
+.btn__enable {
+    background-color: dodgerblue;
+}
+
+.btn__disable {
+    background: #df4955;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}

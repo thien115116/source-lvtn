@@ -1,0 +1,235 @@
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.btn {
+    margin-top: unset;
+}
+
+.formCreateFood {
+    padding: 10px 15px;
+}
+
+.imgReview {
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.formCreateFood .col-2 {
+    font-weight: bold;
+}
+
+.btn__cancel {
+    background-color: unset;
+    border: unset;
+    outline: unset;
+    display: inline-block;
+}
+
+.btn__cancel:hover {
+    color: brown;
+}
+
+.option_food:hover {
+    color: dodgerblue;
+}
+
+.option_food {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+._label {
+    padding: 5px 20px;
+    color: #fff;
+    border: unset;
+    outline: unset;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.drink {
+    background-color: rgb(28, 235, 166);
+}
+
+.food {
+    background-color: brown;
+}
+
+.option {
+    background-color: burlywood;
+}
+
+._card-food {
+    outline: none;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    background-color: white;
+}
+
+fieldset.scheduler-border {
+    border: 1px groove #000 !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    border-radius: 20px;
+}
+
+legend.scheduler-border {
+    width: inherit;
+    /* Or auto */
+    padding: 0 10px;
+    /* To give a bit of padding on the left and right */
+    border-bottom: none;
+    border-radius: 20px;
+}
+
+.labelAdmin {
+    padding: 5px 10px;
+    background: rgb(251, 177, 177);
+    border-radius: 5px;
+    color: rgb(167, 0, 0);
+    font-size: 16px;
+}
+
+.label_ASAP {
+    padding: 5px 10px;
+    background: rgb(251, 177, 177);
+    border-radius: 5px;
+    color: rgb(167, 0, 0);
+    font-size: 16px;
+    text-align: center;
+}
+
+.labelStaff {
+    padding: 5px 10px;
+    background: rgb(148, 201, 255);
+    border-radius: 5px;
+    color: rgb(0, 3, 156);
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_enable {
+    padding: 5px 10px;
+    background: rgba(4, 209, 209, 0.1);
+    border-radius: 5px;
+    color: #009dab;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_enable {
+    padding: 5px 10px;
+    background: rgba(209, 4, 48, 0.1);
+    border-radius: 5px;
+    color: #ab0025;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_online {
+    padding: 5px 10px;
+    background: rgba(4, 209, 130, 0.1);
+    border-radius: 5px;
+    color: #00ab42;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_online {
+    padding: 5px 10px;
+    background: rgba(209, 4, 124, 0.1);
+    border-radius: 5px;
+    color: #ab0025;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_confirm_email {
+    padding: 5px 10px;
+    background: rgba(209, 4, 175, 0.1);
+    border-radius: 5px;
+    color: #ab0094;
+    font-size: 16px;
+    text-align: center;
+}
+
+.label_non_confirm_email {
+    padding: 5px 10px;
+    background: rgba(195, 209, 4, 0.1);
+    border-radius: 5px;
+    color: #aba000;
+    font-size: 16px;
+    text-align: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.return-effect {
+    width: 120px;
+    height: 50px;
+    background: #330000;
+    border-radius: 0px 0px 40px 0px;
+    line-height: 50px;
+    font-size: 18px;
+    text-align: center;
+    font-family: baemin;
+    color: white;
+}
+
+.effect-2 {
+    padding-right: 5px;
+}
+
+.return-effect:hover {
+    background: #009dab;
+}
+
+.return-effect:hover .effect-2 svg {
+    animation: move 2s ease infinite;
+}
+
+@keyframes move {
+    0%, 100% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-15px);
+    }
+}
+
+.effect-3 {
+    bottom: 0;
+    background: #330000;
+    height: 50px;
+    line-height: 50px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    font-size: 18px;
+    text-align: center;
+    font-family: baemin;
+    color: white;
+    cursor: pointer;
+}
+
+.effect-3:hover {
+    background: #009dab;
+}

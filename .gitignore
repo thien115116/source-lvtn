@@ -1,0 +1,7 @@
+**/node_modules/*
+
+# dependencies
+/resources/upload
+
+# setting workspace vscode
+/.vscode

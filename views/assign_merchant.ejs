@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boo - Assign Merchant</title>
+    <link rel="icon" href="http://localhost:3100/upload/icon_tran.png" />
+    <link rel="stylesheet" href="http://localhost:3100/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="http://localhost:3100/bootstrap4/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="http://localhost:3100/css/merchant.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    fieldset.brand-fieldset {
+      border: 1px groove #ddd !important;
+      padding: 0 1.4em 1.4em 1.4em !important;
+      margin: 0 0 1.5em 0 !important;
+      -webkit-box-shadow: 0px 0px 0px 0px #000;
+      box-shadow: 0px 0px 0px 0px #000;
+      border-radius: 5px;
+    }
+
+    legend.brand-fieldset {
+      width: inherit;
+      /* Or auto */
+      padding: 0 10px;
+      /* To give a bit of padding on the left and right */
+      border-bottom: none;
+    }
+    #hide-brand {
+      display: none;
+    }
+  </style>
+  <body style="overflow-y: auto">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="banner">
+          <div class="banner_content"><span>Boo</span></div>
+        </div>
+        <div class="content" style="height: 130vh">
+          <div class="content_box" style="max-height: 130vh; height: 130vh">
+            <img
+              class="attach_img"
+              src="http://localhost:3100/upload/icon_tran.png"
+              alt="No img"
+            />
+            <div class="content_inner mt-3">
+              <div>
+                <h1 class="text-center">Trang Điền Thông Tin Cửa Hàng</h1>
+              </div>
+              <form id="myForm">
+                <div class="form-group">
+                  <label class="font-weight-bold"
+                    >Tên cửa hàng <span style="color: red">*</span></label
+                  >
+                  <input
+                    name="name_merchant"
+                    type="text"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold">Thương hiệu </label>
+                  <input
+                    id="brand-id"
+                    name="id_brand"
+                    type="text"
+                    class="form-control"
+                    onchange="getBrand()"
+                  />
+                </div>
+                <div id="hide-brand">
+                  <fieldset class="brand-fieldset">
+                    <legend class="brand-fieldset">Thương Hiệu</legend>
+                    <div class="row">
+                      <div class="col-3 font-weight-bold">
+                        Tên Thương Hiệu :
+                      </div>
+                      <div class="col-9"><span id="brand-name"></span></div>
+                      <div class="col-3 font-weight-bold">Địa Chỉ :</div>
+                      <div class="col-9"><span id="brand-address"></span></div>
+                      <div class="col-3 font-weight-bold">Ngày Tạo :</div>
+                      <div class="col-9">
+                        <span id="brand-createDay"></span>
+                      </div>
+                      <div class="col-3 font-weight-bold">
+                        Legal Representative :
+                      </div>
+                      <div class="col-9"><span id="brand-legal"></span></div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div>
+                  <label class="font-weight-bold"
+                    >Loại hình kinh doanh
+                    <span style="color: red">*</span></label
+                  >
+                  <div class="form-check">
+                    <input
+                      name="type_business"
+                      type="radio"
+                      value="1"
+                      class="form-check-input"
+                    />
+                    Đồ Ăn
+                  </div>
+                  <div class="form-check">
+                    <input
+                      name="type_business"
+                      type="radio"
+                      value="2"
+                      class="form-check-input"
+                    />Thức Uống
+                  </div>
+                  <div class="form-check">
+                    <input
+                      name="type_business"
+                      type="radio"
+                      value="3"
+                      class="form-check-input"
+                    />
+                    Tổng Hợp
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold"
+                    >Tên Người liên hệ <span style="color: red">*</span></label
+                  >
+                  <input name="author" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold"
+                    >Số điện thoại <span style="color: red">*</span></label
+                  >
+                  <input name="phone" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold"
+                    >Email<span style="color: red">*</span></label
+                  >
+                  <input name="email" type="email" class="form-control" />
+                  <small class="form-text text-muted"
+                    >* Vui lòng nhập email chính xác để tránh kéo dài thời gian
+                    xử lý hồ sơ. Tất cả các ký tự viết thường, không viết in
+                    hoa. Ví dụ: dangkydoitacnhahang@boofood.vn</small
+                  >
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold"
+                    >Địa chỉ cửa hàng, bao gồm: Số nhà và Tên đường (địa chỉ
+                    không quá 2 xẹt)<span style="color: red">*</span></label
+                  >
+                  <input name="address" type="text" class="form-control" />
+                  <small class="form-text text-muted"
+                    >Ví dụ: 142 Nguyễn Đình Chiểu (với địa chỉ không quá 2 gạch
+                    chéo: 142/1/2 Nguyễn Đình Chiểu)</small
+                  >
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-info">
+                    Gửi Thông Tin
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.min.js"
+    ></script>
+    <script>
+      function isVietnamesePhoneNumber(number) {
+        return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(number);
+      }
+      function isVietnameseTaxCode(number) {
+        return /([0-9]{10})(|)(-[0-9]{3}|)\b/.test(number);
+      }
+      function checkVietnamese(string) {
+        try {
+          const PATTERN =
+            "^[A-Za-z0-9_@./#&+,-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+            "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+            "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$";
+          if (string === null) return false;
+          return string.match(PATTERN) ? true : false;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      function getBrand() {
+        let inputBrand = document.getElementById("brand-id");
+        console.log(inputBrand.value.length);
+        if (inputBrand.value && inputBrand.value.length === 10) {
+          let url = `http://localhost:3100/api/brand/code?code=${inputBrand.value}&secretKey=Il0v3t3chn0l09y@`;
+          try {
+            $.ajax({
+              type: "get",
+              crossDomain: true,
+              dataType: "json",
+              contentType: "application/json; charset=utf-8",
+              url: url,
+              success: function (res) {
+                console.log(res.nameBrand);
+                document.getElementById(
+                  "brand-name"
+                ).innerHTML = `${res.nameBrand}`;
+                document.getElementById(
+                  "brand-address"
+                ).innerHTML = `${res.address}`;
+                document.getElementById(
+                  "brand-createDay"
+                ).innerHTML = `${res.createAt}`;
+                document.getElementById(
+                  "brand-legal"
+                ).innerHTML = `${res.legalRepresentative}`;
+                document.getElementById("hide-brand").style.display = "block";
+              },
+              error: function (err) {
+                console.log(err);
+              },
+            });
+          } catch (error) {}
+        } else {
+          document.getElementById("hide-brand").style.display = "none";
+        }
+      }
+      $("form").submit(function (e) {
+        e.preventDefault();
+        //Lấy dữ liệu khi submit
+        var data = $("form")
+          .serializeArray()
+          .reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+          }, {});
+
+        //   Create Account
+
+        //Trim để cắt whitespace ở đầu và cuối chuỗi
+        //Validation
+        console.log(data.phone);
+        console.log("PHONE NUMBER", isVietnamesePhoneNumber(data.phone));
+        console.log("NAME MERCHANT", checkVietnamese(data.name_merchant));
+        console.log("AUTHOR", checkVietnamese(data.author));
+        console.log("ADDRESS", checkVietnamese(data.address));
+        console.log("TAX", isVietnameseTaxCode(data.id_brand));
+        if (
+          isVietnamesePhoneNumber(data.phone) &&
+          checkVietnamese(data.name_merchant) &&
+          checkVietnamese(data.author) &&
+          checkVietnamese(data.address)
+        ) {
+          let string = data.author.trim();
+          let firstName = string.substring(0, string.lastIndexOf(" ")); // Cắt chuỗi
+          let lastName = string.substring(string.lastIndexOf(" ") + 1);
+          let id_brand = null;
+          //
+          if (!data.id_brand && isVietnameseTaxCode(data.id_brand)) {
+            id_brand = data.id_brand;
+          }
+          let accountData = {
+            nameMerchant: data.name_merchant,
+            password: data.phone,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: data.phone,
+            email: data.email,
+            address: data.address,
+            id_brand: id_brand,
+            type_business: data.type_business,
+            openingHours:
+              '[{"dayIndex":2,"dayOfWeek":"Monday","from":"2:00 am","isOpenDay":true,"to":"4:00 am"},{"dayIndex":3,"dayOfWeek":"Tuesday","from":"6:00 am","isOpenDay":true,"to":"9:00 pm"},{"dayIndex":4,"dayOfWeek":"Wednesday","from":"10:00 pm","isOpenDay":true,"to":"10:00 pm"},{"dayIndex":5,"dayOfWeek":"Thursday","from":"9:00 pm","isOpenDay":true,"to":"9:00 pm"},{"dayIndex":6,"dayOfWeek":"Friday","from":"9:00 pm","isOpenDay":true,"to":"3:00 pm"},{"dayIndex":7,"dayOfWeek":"Saturday","from":"8:00 am","isOpenDay":true,"to":"11:00 pm"},{"dayIndex":1,"dayOfWeek":"Sunday","from":"8:00 am","isOpenDay":true,"to":"11:00 pm"}]',
+          };
+          try {
+            $.ajax({
+              type: "post",
+              crossDomain: true,
+              dataType: "json",
+              data: JSON.stringify(accountData),
+              contentType: "application/json; charset=utf-8",
+              url: `http://localhost:3100/api/users/sign-up-and-upgrade`,
+              success: function (res) {
+                alert(res.message);
+                $("#myForm").trigger("reset");
+                document.getElementById("hide-brand").style.display = "none";
+              },
+              error: function (err) {
+                console.log(err);
+              },
+            });
+          } catch (error) {}
+        } else {
+          console.log(false);
+        }
+      });
+    </script>
+  </body>
+</html>

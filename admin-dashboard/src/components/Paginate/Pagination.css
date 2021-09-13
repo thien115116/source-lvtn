@@ -1,0 +1,10 @@
+.page-item span {
+    font-size: unset !important;
+}
+
+.page-item.active .page-link, .pagination-light .page-item.active .page-link {
+    color: #fff;
+    background-color: dodgerblue !important;
+    border-color: dodgerblue !important;
+    border-radius: 5px;
+}

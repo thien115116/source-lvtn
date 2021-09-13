@@ -1,0 +1,98 @@
+:root {
+    --textColorPrimary: #414141;
+}
+
+@font-face {
+    font-family: segoeui;
+    src: url(../fonts/segoe_ui/Segoe\ UI.ttf);
+}
+
+.wrap {
+    background-image: linear-gradient(to right top, #5756cd, #7455cc, #8c53c9, #a152c6, #b451c2);
+}
+
+.form__title {
+    font-family: segoeui;
+    font-weight: bold;
+}
+
+.login__form {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__box {
+    box-shadow: 0px 0px 10px #d0d0d0;
+    border-radius: 5px;
+    height: 80vh;
+    width: 75vw;
+    background: #fcfcfc;
+}
+
+.input--primary {
+    background-color: #e8f0fe !important;
+    color: black;
+    font-size: 20px;
+    padding: 0 70px !important;
+    border-radius: 35px !important;
+    border: none !important;
+    height: 45px !important;
+    font-weight: bold !important;
+}
+
+.logo__img {
+    height: 115px;
+    width: 115px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.login__content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0 80px !important;
+}
+
+.login__logo-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form_content {
+    width: 100%;
+    margin-top: 55px;
+}
+
+.btn--medium {
+    width: 100% !important;
+    border-radius: 35px !important;
+    background-color: #8ac53e !important;
+    border: unset !important;
+    height: 45px !important;
+}
+
+.form__input {
+    position: relative;
+}
+
+.form__email-icon, .form__pwd-icon {
+    position: absolute;
+    top: 35%;
+    left: 10%;
+}
+
+.fa-lock {
+    font-size: 20px !important;
+}
+
+.logo--primary {
+    width: 300px;
+    object-fit: contain;
+}

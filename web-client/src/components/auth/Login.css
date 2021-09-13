@@ -1,0 +1,92 @@
+@font-face {
+    font-family: baemin;
+    src: url(../../assets/font/bmdaniel_bold.otf);
+    font-style: none;
+    font-weight: none;
+}
+
+.lottie__1 {
+    position: absolute;
+    pointer-events: none;
+    z-index: -10;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    background-image: unset !important;
+}
+
+.login {
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px 50px;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #141619;
+    overflow: none;
+}
+
+.login__title-main {
+    font-family: baemin;
+    font-size: 55px;
+    color: #2ac1bc;
+    display: block;
+}
+
+.login__title-sub {
+    font-family: baemin;
+    font-size: 35px;
+    color: #2ac1bc;
+    display: block;
+}
+
+.btn-login {
+    padding: 15px 0 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.submit-btn {
+    position: relative;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    /* visibility: hidden; */
+    top: 0px;
+    right: 0px;
+    transition: .25s ease;
+    pointer-events: none;
+}
+
+.circle-2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    transition: .25s ease;
+    pointer-events: none;
+}
+
+.btn-login:hover+.circle {
+    transform: translate(-50%, 0);
+}
+
+.submit-btn:hover>.circle-2 {
+    transform: translate(50%, 0);
+}

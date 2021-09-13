@@ -1,0 +1,18 @@
+.lottie__1 {
+    position: absolute;
+    pointer-events: none;
+    z-index: -10;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    background-image: unset !important;
+}
+
+.login__box {
+    height: 40vh;
+    width: 55vw;
+}
